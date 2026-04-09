@@ -1,70 +1,151 @@
-# Getting Started with Create React App
+# Smart Architecture Booking Platform 
+A full-stack web application that allows users to explore, design, and book architectural projects across 6 building categories — with an integrated design calculator and an admin dashboard for complete project management.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Getting Started
+# Prerequisites
 
-## Available Scripts
+Make sure you have the following installed:
+Node.js (v16 or above)
+MongoDB (local or Atlas)
+npm (comes with Node.js)
 
-In the project directory, you can run:
+# Project Structure
+REACTPROJECT/
+│
+├── frontend/
+│   └── client/          # React frontend application
+│
+└── backend/             # Node.js + Express backend API
 
-### `npm start`
+# How to Run the Project
+# Step 1 — Open Terminal
+In VS Code, press Ctrl + J to open the integrated terminal.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Step 2 — Run the Frontend
+In the terminal, navigate to the React client folder and start the development server:
+cd frontend
+cd client
+npm start
+The React app will launch at http://localhost:3000
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Step 3 — Run the Backend
+Open a new terminal (click the + icon in the terminal panel), then run:
+cd backend
+npm start
+The backend server will start and MongoDB will connect automatically.
 
-### `npm test`
+# Application Pages & Features
+# Register & Login
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Click Register to create a new user account by filling in your details.
+Click Login to access your account.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# About Us
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Click About Us in the navigation to view complete information about the platform and its mission.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+# Contact
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Click Contact to reach the team via phone number or Gmail.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Building Categories
+After logging in, users can explore 6 types of architectural projects:
+Category           Description
+Home Design        Residential home architecture 
+Hospital Design    Medical facility layouts
+Shopping Mall      Commercial retail spaces
+Restaurant Design  Dining and hospitality designs 
+Apartment Design   Multi-unit residential buildings
+College Design     Educational institution architecture
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+#  How to Browse & Book
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Click on any building category from the home page.
 
-## Learn More
+Browse through multiple design types available for that category.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Click the View button on your preferred design to see:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Full architecture images
 
-### Code Splitting
+Detailed description of the building
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Click Book Now to submit a booking request.
 
-### Analyzing the Bundle Size
+The team will contact you and begin the construction process.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+# Design Calculator
+The Design Calculator helps users estimate project costs before booking.
 
-### Making a Progressive Web App
+# Input Fields:
+Field              Description
+Select Project          Choose the building type
+Total Area (sq ft)      Total construction area
+Floors                  Number of floors
+Cost per sq ft          Construction cost rate
+Parking Area (sq ft)    Area for parking
+Interior Cost %         Percentage for interior work
+Number of Rooms         Total rooms required
+Bathrooms               Number of bathrooms
+Number of Lifts         Lifts/elevators needed
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Click Calculate to get a detailed budget analysis and project cost estimate.
 
-### Advanced Configuration
+# Proposed System
+The Smart Architecture Booking Platform provides a single, unified website where users can:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Explore 6 types of architectural projects: Home, Hospital, Shopping Mall, Restaurant, Apartment, and College.
+View detailed designs with images and descriptions.
+Use the Design Calculator to estimate costs before committing.
+Book their preferred design directly through the platform.
+Get contacted by the team to start construction.
 
-### Deployment
+This eliminates the need to visit multiple firms or agencies — everything from inspiration to booking happens in one place.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+# Admin Dashboard
+Admins have a dedicated dashboard with full control over the platform.
+# Admin Login
+Log in with admin credentials to access the Admin Dashboard.
 
-### `npm run build` fails to minify
+# Dashboard Sections
+# Dashboard
+Overview of platform activity and statistics.
+# Users
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+View the list of all registered users.
+See total user count and individual details.
+
+# Plans / Projects
+
+See all booked projects.
+View status of each project:
+
+ Active — Construction in progress
+ Pending — Awaiting start
+
+
+Admin can edit project status at any time.
+
+# Bookings
+
+View all booking requests submitted by users.
+See project details, user info, and booking history.
+
+# Profile
+
+View and edit admin profile information.
+Change password securely.
+
+# Tech Stack
+Layer          Technology
+Frontend       React.js
+Backend        Node.js + Express.js
+Database       MongoDB
+Styling        CSS / Tailwind / Bootstrap
+
+# Contact
+For support or inquiries, use the Contact page in the application to reach us via phone or email.
+
+
