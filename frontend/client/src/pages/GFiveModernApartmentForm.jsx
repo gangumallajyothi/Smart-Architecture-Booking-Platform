@@ -119,7 +119,20 @@ function GFiveModernApartmentForm() {
         .checkboxText { font-size:18px; }
         .approveButton { background: purple; color:white; border:none; padding:10px 22px; border-radius:6px; cursor:pointer; }
         .approveButton:hover { background: brown; }
-      `}</style>
+      `}
+        @media (max-width: 600px) {
+          .card-container {
+            grid-template-columns: 1fr !important;
+            padding: 15px !important;
+            gap: 20px !important;
+          }
+          .card {
+            width: 100% !important;
+            max-width: 100% !important;
+          }
+        }
+        
+        </style>
 
     </div>
   );

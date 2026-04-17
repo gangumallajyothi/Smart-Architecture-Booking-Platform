@@ -64,7 +64,7 @@ justify-items:center;
 /* Card */
 
 .card {
-width: 100%; max-width: 100%; max-width: 320px;
+width: 100%; max-width: 100%; max-width: 100%; max-width: 320px;
 height: auto; min-height: 270px;
 background:white;
 border-radius:10px;
@@ -110,7 +110,20 @@ transition:0.3s;
 background:#2c80b4;
 }
 
-`}</style>
+`}
+        @media (max-width: 600px) {
+          .card-container {
+            grid-template-columns: 1fr !important;
+            padding: 15px !important;
+            gap: 20px !important;
+          }
+          .card {
+            width: 100% !important;
+            max-width: 100% !important;
+          }
+        }
+        
+        </style>
 
 <button className="back-btn" onClick={() => navigate(-1)}>
 ← Back

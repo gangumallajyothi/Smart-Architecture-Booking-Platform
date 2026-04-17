@@ -61,9 +61,20 @@ function LoginPage() {
   const styles = {
     container: { height: "100vh", width: "100%", position: "relative", fontFamily: "Arial" },
     bg: { height: "100%", width: "100%", objectFit: "cover", position: "absolute", zIndex: "-1" },
-    formBox: { position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", background: "rgba(255,255,255,0.95)", padding: "40px", borderRadius: "12px", width: "400px", boxShadow: "0 0 20px rgba(0,0,0,0.4)" },
-    title: { textAlign: "center", fontSize: "28px", fontWeight: "bold", marginBottom: "20px", color: "darkorange" },
-    input: { padding: "12px", marginBottom: "12px", width: "100%", borderRadius: "6px", border: "1px solid #ccc", fontSize: "14px" },
+    formBox: { 
+      position: "absolute", 
+      top: "50%", 
+      left: "50%", 
+      transform: "translate(-50%,-50%)", 
+      background: "rgba(255,255,255,0.95)", 
+      padding: "clamp(20px, 5vw, 40px)", 
+      borderRadius: "12px", 
+      width: "min(92%, 400px)", 
+      boxShadow: "0 0 20px rgba(0,0,0,0.4)",
+      boxSizing: "border-box"
+    },
+    title: { textAlign: "center", fontSize: "clamp(20px, 6vw, 28px)", fontWeight: "bold", marginBottom: "20px", color: "darkorange" },
+    input: { padding: "12px", marginBottom: "12px", width: "100%", borderRadius: "6px", border: "1px solid #ccc", fontSize: "14px", boxSizing: "border-box" },
     button: { padding: "12px", width: "100%", background: "darkorange", color: "white", border: "none", borderRadius: "6px", fontSize: "16px", cursor: "pointer" },
     error: { color: "red", textAlign: "center", marginBottom: "10px" },
     register: { textAlign: "center", marginTop: "10px", fontSize: "14px", cursor: "pointer", color: "blue" }

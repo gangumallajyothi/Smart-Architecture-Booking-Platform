@@ -50,7 +50,7 @@ function HomeDesigns() {
         }
 
         .card {
-          width: 100%; max-width: 100%; max-width: 320px;
+          width: 100%; max-width: 100%; max-width: 100%; max-width: 320px;
           height: auto; min-height: 280px;
           background-color: #ffffff;
           border-radius: 10px;
@@ -94,7 +94,20 @@ function HomeDesigns() {
         .card button:hover {
           background-color: #2980b9;
         }
-      `}</style>
+      `}
+        @media (max-width: 600px) {
+          .card-container {
+            grid-template-columns: 1fr !important;
+            padding: 15px !important;
+            gap: 20px !important;
+          }
+          .card {
+            width: 100% !important;
+            max-width: 100% !important;
+          }
+        }
+        
+        </style>
 
       <button className="back-btn" onClick={() => navigate(-1)}>
         ← Back

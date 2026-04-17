@@ -55,7 +55,20 @@ function SemiDetachedHouse() {
         .approvalBox { background:white; margin:20px; padding:20px; border-radius:10px; display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; gap: 15px; box-shadow:0 0 10px rgba(0,0,0,0.1); }
         .approveBtn { background:green; color:white; border:none; padding:12px 25px; font-size:16px; border-radius:6px; cursor:pointer; }
         .approveBtn:hover { background:#006400; }
-      `}</style>
+      `}
+        @media (max-width: 600px) {
+          .card-container {
+            grid-template-columns: 1fr !important;
+            padding: 15px !important;
+            gap: 20px !important;
+          }
+          .card {
+            width: 100% !important;
+            max-width: 100% !important;
+          }
+        }
+        
+        </style>
 
       {/* Header */}
       <div className="header">

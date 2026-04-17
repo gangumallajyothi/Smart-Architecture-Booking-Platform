@@ -128,7 +128,20 @@ export default function PalatePlaceRestaurantForm() {
         .checkboxRow { display:flex; gap:10px; align-items:flex-start; }
         .approveBtn { margin-top:1px; margin-left:1000px; background: red; font-weight:bold; color:white; border:none; padding:10px 30px; border-radius:6px; font-size:16px; cursor:pointer; }
         .approveBtn.active { background:darkgreen; }
-      `}</style>
+      `}
+        @media (max-width: 600px) {
+          .card-container {
+            grid-template-columns: 1fr !important;
+            padding: 15px !important;
+            gap: 20px !important;
+          }
+          .card {
+            width: 100% !important;
+            max-width: 100% !important;
+          }
+        }
+        
+        </style>
 
     </div>
   );

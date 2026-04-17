@@ -57,7 +57,20 @@ function VillaHouse() {
         .checkbox-section { margin:25px; padding:20px; background:white; border-radius:8px; display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; gap: 15px; box-shadow:0 0 10px rgba(0,0,0,0.15); }
         .approve-btn { background:#2ecc71; border:none; padding:12px 28px; color:white; font-size:16px; border-radius:6px; cursor:pointer; }
         .approve-btn:disabled { background:gray; cursor:not-allowed; }
-      `}</style>
+      `}
+        @media (max-width: 600px) {
+          .card-container {
+            grid-template-columns: 1fr !important;
+            padding: 15px !important;
+            gap: 20px !important;
+          }
+          .card {
+            width: 100% !important;
+            max-width: 100% !important;
+          }
+        }
+        
+        </style>
 
       <div className="header">
         <button className="back-btn" onClick={goBack}>← Back</button>

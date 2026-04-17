@@ -19,6 +19,19 @@ export default function AdminLogin({ onLogin }) {
   };
 
   return (
+    <style>{`
+        @media (max-width: 600px) {
+          .card-container {
+            grid-template-columns: 1fr !important;
+            padding: 15px !important;
+            gap: 20px !important;
+          }
+          .card {
+            width: 100% !important;
+            max-width: 100% !important;
+          }
+        }
+        `}</style>
     <div style={{ maxWidth: 400, margin: 'auto', padding: 20 }}>
       <h2>Admin Login</h2>
       <form onSubmit={handleSubmit}>

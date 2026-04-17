@@ -52,7 +52,20 @@ function DentalHospitalForm() {
         .card h2 { color: darkblue; margin-top:20px; }
         .infoCard h2 { color: darkblue; margin-top:20px; }
       
-      `}</style>
+      `}
+        @media (max-width: 600px) {
+          .card-container {
+            grid-template-columns: 1fr !important;
+            padding: 15px !important;
+            gap: 20px !important;
+          }
+          .card {
+            width: 100% !important;
+            max-width: 100% !important;
+          }
+        }
+        
+        </style>
 
       <div className="container">
 

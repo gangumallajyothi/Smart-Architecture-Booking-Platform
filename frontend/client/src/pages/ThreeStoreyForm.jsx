@@ -53,7 +53,20 @@ function ThreeStoreyHouse() {
         .contentBox h2 { color:#2c3e50; }
         .approveBox { background:white; padding:20px; border-radius:10px; display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; gap: 15px; box-shadow:0px 2px 6px rgba(0,0,0,0.1); }
         .approveBtn { background:green; color:white; border:none; padding:10px 25px; font-size:16px; border-radius:6px; cursor:pointer; }
-      `}</style>
+      `}
+        @media (max-width: 600px) {
+          .card-container {
+            grid-template-columns: 1fr !important;
+            padding: 15px !important;
+            gap: 20px !important;
+          }
+          .card {
+            width: 100% !important;
+            max-width: 100% !important;
+          }
+        }
+        
+        </style>
 
       <div className="header">
         <button className="backBtn" onClick={goBack}>← Back</button>

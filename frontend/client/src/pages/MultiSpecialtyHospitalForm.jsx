@@ -56,7 +56,20 @@ function MultiSpecialtyHospitalForm() {
         .checkboxArea input { width:25px; height:25px; }
         .approveBtn { background:#004aad; color:white; border:none; padding:12px 20px; border-radius:6px; cursor:pointer; font-size:16px; }
         .approveBtn:hover { background:#002f6c; }
-      `}</style>
+      `}
+        @media (max-width: 600px) {
+          .card-container {
+            grid-template-columns: 1fr !important;
+            padding: 15px !important;
+            gap: 20px !important;
+          }
+          .card {
+            width: 100% !important;
+            max-width: 100% !important;
+          }
+        }
+        
+        </style>
 
       <button className="backBtn" onClick={goBack}>← Back</button>
 
