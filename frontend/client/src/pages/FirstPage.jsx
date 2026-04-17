@@ -69,50 +69,58 @@ function FirstPage() {
     navbar: {
       position: "absolute",
       top: "10px",
-      right: "20px",
+      right: "10px",
+      left: "10px",
       display: "flex",
+      justifyContent: "space-between",
       alignItems: "center",
-      gap: "20px",
+      gap: "10px",
       border: "2px solid orange",
-      padding: "8px 20px",
+      padding: "8px 15px",
       borderRadius: "10px",
-      background: "rgba(255,255,255,0.8)"
+      background: "rgba(255,255,255,0.9)",
+      zIndex: "100"
     },
 
     link: {
       cursor: "pointer",
-      fontWeight: "bold"
+      fontWeight: "bold",
+      fontSize: "14px",
+      whiteSpace: "nowrap"
     },
 
     person: {
-      height: "30px",
+      height: "25px",
       cursor: "pointer"
     },
 
     arrow: {
-      height: "15px",
+      height: "12px",
       cursor: "pointer"
     },
 
     logoutBox: {
       position: "absolute",
-      top: "50px",
-      right: "20px",
+      top: "60px",
+      right: "10px",
       background: "white",
       padding: "10px",
       borderRadius: "6px",
       boxShadow: "0 0 10px gray",
-      cursor: "pointer"
+      cursor: "pointer",
+      zIndex: "101"
     },
 
     contactBox: {
       position: "absolute",
-      top: "55px",
-      right: "150px",
+      top: "60px",
+      right: "10px",
       background: "white",
-      padding: "10px",
+      padding: "15px",
       borderRadius: "8px",
-      boxShadow: "0 0 10px gray"
+      boxShadow: "0 0 10px gray",
+      zIndex: "101",
+      minWidth: "200px"
     },
 
     contactItem: {
@@ -120,46 +128,56 @@ function FirstPage() {
       alignItems: "center",
       gap: "10px",
       margin: "8px",
-      cursor: "pointer"
+      cursor: "pointer",
+      fontSize: "14px"
     },
 
     icon: {
-      height: "25px"
+      height: "20px"
     },
 
     marquee: {
       position: "absolute",
-      top: "45%",
-      fontSize: "40px",
+      top: "50%",
+      transform: "translateY(-50%)",
+      fontSize: "24px",
       color: "darkorange",
       fontWeight: "bold",
       display: "flex",
       alignItems: "center",
-      gap: "10px"
+      gap: "10px",
+      width: "100%",
+      textAlign: "center"
     },
 
     buildingIcon: {
-      height: "40px"
+      height: "30px"
     },
 
     calculatorIcon: {
       position: "absolute",
-      left: "20px",
-      top: "15px",
-      height: "40px",
-      cursor: "pointer"
+      left: "10px",
+      bottom: "20px",
+      height: "50px",
+      cursor: "pointer",
+      zIndex: "100",
+      background: "white",
+      borderRadius: "50%",
+      padding: "5px",
+      boxShadow: "0 0 10px rgba(0,0,0,0.3)"
     },
 
     calculatorMenu: {
       position: "absolute",
-      top: "60px",
-      left: "20px",
+      bottom: "80px",
+      left: "10px",
       background: "white",
       padding: "10px 20px",
       borderRadius: "6px",
       boxShadow: "0 0 10px gray",
       cursor: "pointer",
-      fontWeight: "bold"
+      fontWeight: "bold",
+      zIndex: "100"
     }
 
   }

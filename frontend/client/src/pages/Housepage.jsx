@@ -43,14 +43,14 @@ function HomeDesigns() {
 
         .card-container {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
           gap: 25px;
-          padding: 30px 50px 80px;
+          padding: 20px 10px 80px;
           justify-items: center;
         }
 
         .card {
-          width: 100%; max-width: 320px;
+          width: 100%; max-width: 100%; max-width: 320px;
           height: auto; min-height: 280px;
           background-color: #ffffff;
           border-radius: 10px;
