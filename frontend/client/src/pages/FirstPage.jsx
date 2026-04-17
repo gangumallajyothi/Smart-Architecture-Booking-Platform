@@ -53,13 +53,15 @@ function FirstPage() {
       height: "100vh",
       width: "100%",
       position: "relative",
-      fontFamily: "Arial"
+      fontFamily: "Arial",
+      overflow: "hidden"
     },
 
     bg: {
       height: "100%",
       width: "100%",
       objectFit: "cover",
+      objectPosition: "center",
       position: "absolute",
       zIndex: "-1"
     },

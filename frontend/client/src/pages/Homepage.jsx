@@ -81,7 +81,7 @@ function Homepage() {
         .card {
           background: #ffffff;
           border-radius: 10px;
-          height: 330px;
+          height: auto; min-height: 330px;
           box-shadow: 0 4px 10px rgba(0,0,0,0.1);
           text-align: center;
           transition: transform 0.3s;

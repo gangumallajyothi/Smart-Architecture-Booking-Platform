@@ -104,7 +104,7 @@ function FashionShoppingMallForm() {
         .backButton:hover { background: red; }
         .titleCard { width:100%; background:#0b0b8f; color:white; height:9vh; padding:25px; border-radius:6px; text-align:center; font-size: 28px; margin-bottom:20px; }
         .imageSection { display:flex; gap:20px; margin-bottom:25px; }
-        .card { flex:1; min-width: 300px; background:white; padding:15px; border-radius:10px; box-shadow:0 3px 10px rgba(0,0,0,0.2); }
+        .card { flex:1; min-width: 100%; max-width: 300px; background:white; padding:15px; border-radius:10px; box-shadow:0 3px 10px rgba(0,0,0,0.2); }
         .card img { width:100%; border-radius:8px; }
         .contentCard { background:white; padding:25px; border-radius:10px; margin-bottom:25px; box-shadow:0 3px 10px rgba(0,0,0,0.2); }
         .contentCard h2 { color: darkblue; }

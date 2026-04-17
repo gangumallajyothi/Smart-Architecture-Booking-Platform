@@ -88,7 +88,7 @@ function IndependentHouse() {
         }}>
           <h2>House Exterior View</h2>
           <img src={IndependentHouseImg} alt="Independent House"
-            style={{ width: "100%", height: "400px", objectFit: "cover", borderRadius: "6px" }}
+            style={{ width: "100%", height: "auto", maxHeight: "60vh", objectFit: "contain", borderRadius: "6px" }}
           />
         </div>
 
@@ -99,7 +99,7 @@ function IndependentHouse() {
           <h2>Architecture Layout</h2>
           <img src={IndependentArchitecture} alt="House"
             style={{
-              width: "100%", height: "50vh", objectFit: "contain",
+              width: "100%", height: "auto", maxHeight: "50vh", objectFit: "contain",
               borderRadius: "6px", border: "2px solid #ccc",
               background: "#fafafa", boxShadow: "0 4px 12px rgba(0,0,0,0.15)"
             }}

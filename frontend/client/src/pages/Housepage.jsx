@@ -50,8 +50,8 @@ function HomeDesigns() {
         }
 
         .card {
-          width: 320px;
-          height: 280px;
+          width: 100%; max-width: 320px;
+          height: auto; min-height: 280px;
           background-color: #ffffff;
           border-radius: 10px;
           box-shadow: 0 8px 20px rgba(0,0,0,0.2);

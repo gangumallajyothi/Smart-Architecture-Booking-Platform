@@ -63,9 +63,9 @@ justify-items:center;
 
 /* Card */
 
-.card{
-width:320px;
-height:270px;
+.card {
+width: 100%; max-width: 320px;
+height: auto; min-height: 270px;
 background:white;
 border-radius:10px;
 box-shadow:0 8px 20px rgba(0,0,0,0.2);
