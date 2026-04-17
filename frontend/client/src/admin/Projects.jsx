@@ -302,7 +302,7 @@ export default function Projects() {
         }
       </div>
 
-      {/* Add / Edit Modal */}
+      
       {modal && (
         <div className="pr-overlay" onClick={e => { if (e.target.className === 'pr-overlay') { setModal(false); setEditingId(null); } }}>
           <div className="pr-modal">
@@ -353,7 +353,7 @@ export default function Projects() {
         </div>
       )}
 
-      {/* View Plan Modal */}
+      
       {viewItem && (
         <div className="pr-overlay" onClick={e => { if (e.target.className === 'pr-overlay') setViewItem(null); }}>
           <div className="pr-view-modal">

@@ -47,7 +47,7 @@ function EyeHospitalForm() {
         .backBtn:hover { background:darkred; }
         .card { background:white; padding:20px; margin-bottom:25px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.1); }
         .imageRow { display:flex; gap:20px; }
-        .imageCard { flex:1; text-align:center; }
+        .imageCard { flex:1; min-width: 300px; text-align:center; }
         .imageCard img { width:100%; height:500px; border-radius:8px; }
         .textCard h2 { color:#004aad; margin-top:15px; }
         .textCard p { line-height:1.7; font-size:15px; }

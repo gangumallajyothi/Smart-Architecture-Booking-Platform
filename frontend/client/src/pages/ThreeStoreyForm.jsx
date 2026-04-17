@@ -47,11 +47,11 @@ function ThreeStoreyHouse() {
         .backBtn { position:absolute; left:20px; top:12px; background:#2c3e50; color:white; border:none; padding:8px 14px; border-radius:6px; cursor:pointer; }
         .container { padding:20px; }
         .imageRow { display:flex; gap:20px; margin-bottom:20px; }
-        .card { background:white; padding:15px; border-radius:10px; flex:1; box-shadow:0px 2px 6px rgba(0,0,0,0.1); }
+        .card { background:white; padding:15px; border-radius:10px; flex:1; min-width: 300px; box-shadow:0px 2px 6px rgba(0,0,0,0.1); }
         .card img { width:100%; border-radius:6px; margin-top:10px; }
         .contentBox { background:white; padding:20px; border-radius:10px; box-shadow:0px 2px 6px rgba(0,0,0,0.1); margin-bottom:20px; }
         .contentBox h2 { color:#2c3e50; }
-        .approveBox { background:white; padding:20px; border-radius:10px; display:flex; justify-content:space-between; align-items:center; box-shadow:0px 2px 6px rgba(0,0,0,0.1); }
+        .approveBox { background:white; padding:20px; border-radius:10px; display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; gap: 15px; box-shadow:0px 2px 6px rgba(0,0,0,0.1); }
         .approveBtn { background:green; color:white; border:none; padding:10px 25px; font-size:16px; border-radius:6px; cursor:pointer; }
       `}</style>
 

@@ -102,12 +102,12 @@ function GTwoApartmentForm() {
         .backButton:hover { background: purple; }
         .titleCard { width:100%; background: linear-gradient(135deg, #6a0dad, #8b4513); color:white; height:9vh; padding:25px; border-radius:6px; text-align:center; font-size: 28px; margin-bottom:20px; }
         .imageSection { display:flex; gap:20px; margin-bottom:25px; }
-        .card { flex:1; background:white; padding:15px; border-radius:10px; box-shadow:0 3px 10px rgba(0,0,0,0.2); }
+        .card { flex:1; min-width: 300px; background:white; padding:15px; border-radius:10px; box-shadow:0 3px 10px rgba(0,0,0,0.2); }
         .card img { width:100%; border-radius:8px; }
         .contentCard { background:white; padding:25px; border-radius:10px; margin-bottom:25px; box-shadow:0 3px 10px rgba(0,0,0,0.2); }
         .contentCard h2 { color: darkgreen; }
         .contentCard h3 { color: purple; }
-        .declarationCard { background:white; padding:20px; border-radius:10px; box-shadow:0 3px 10px rgba(0,0,0,0.2); display:flex; justify-content:space-between; align-items:center; }
+        .declarationCard { background:white; padding:20px; border-radius:10px; box-shadow:0 3px 10px rgba(0,0,0,0.2); display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; gap: 15px; }
         .checkboxSection { display:flex; align-items:center; gap:12px; }
         .bigCheckbox { width:22px; height:22px; cursor:pointer; }
         .checkboxText { font-size:18px; }

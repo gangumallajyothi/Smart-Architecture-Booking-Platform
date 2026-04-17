@@ -40,10 +40,14 @@ const css = `
 .pf-band-ico{width:34px;height:34px;border-radius:var(--r8);background:rgba(255,255,255,0.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.18);display:flex;align-items:center;justify-content:center;font-size:0.9rem;transition:transform .3s,background .3s}
 .pf-band-ico:hover{transform:translateY(-3px);background:rgba(255,255,255,0.22)}
 
-.pf-band-stats{position:absolute;top:14px;right:1.5rem;display:flex;gap:8px;z-index:2}
+.pf-band-top-right{position:absolute;top:14px;right:1.5rem;display:flex;align-items:center;gap:8px;z-index:4}
 .pf-band-stat{display:flex;align-items:center;gap:6px;background:rgba(0,0,0,0.25);border:1px solid rgba(255,255,255,0.12);backdrop-filter:blur(8px);border-radius:var(--r99);padding:0.3rem 0.85rem}
 .pf-band-stat-n{font-size:0.82rem;font-weight:700;color:#fff}
 .pf-band-stat-l{font-size:0.65rem;color:rgba(255,255,255,0.55);letter-spacing:0.06em}
+
+.pf-logout-btn{display:inline-flex;align-items:center;gap:6px;background:#2563eb;color:#fff;font-size:0.78rem;font-weight:700;padding:0.4rem 1.1rem;border-radius:var(--r99);border:none;cursor:pointer;box-shadow:0 4px 14px rgba(37,99,235,0.45);transition:all .25s;letter-spacing:0.04em;white-space:nowrap}
+.pf-logout-btn:hover{background:#1d4ed8;transform:translateY(-1px);box-shadow:0 6px 20px rgba(37,99,235,0.55)}
+.pf-logout-btn svg{width:14px;height:14px;flex-shrink:0}
 
 .pf-cover-body{padding:0 2rem 2rem}
 .pf-avatar-wrap{display:flex;align-items:flex-end;justify-content:space-between;margin-top:-40px;margin-bottom:1.2rem}
@@ -72,6 +76,7 @@ const css = `
 .pf-stat-n{font-size:1.5rem;font-weight:700;color:var(--ink);line-height:1}
 .pf-stat-l{font-size:0.75rem;color:var(--ink3);margin-top:3px}
 .pf-stat-badge{margin-left:auto;font-size:0.72rem;font-weight:600;padding:0.2rem 0.55rem;border-radius:var(--r99);background:var(--grnl);color:#065f46}
+.pf-stat-badge-gray{margin-left:auto;font-size:0.72rem;font-weight:600;padding:0.2rem 0.55rem;border-radius:var(--r99);background:#f1f5f9;color:var(--ink3)}
 
 .pf-cols{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
 .pf-card{background:var(--card);border-radius:var(--r16);box-shadow:var(--sh);border:1px solid var(--bdr);overflow:hidden;animation:pfFadeUp .5s .2s ease both}
@@ -117,27 +122,26 @@ const css = `
   .pf-form-group.full{grid-column:span 1}
   .pf-info-row{flex-direction:column;gap:1rem}
   .pf-cover-logo{left:1rem}
-  .pf-band-stats{display:none}
+  .pf-band-top-right{gap:6px}
+  .pf-band-stat{display:none}
 }
 @media(max-width:580px){
   .pf{padding:1rem}
   .pf-pwd-rules{grid-template-columns:1fr}
   .pf-logo-text{display:none}
   .pf-band-deco{display:none}
+  .pf-logout-btn span.logout-label{display:none}
 }
 `;
 
-// ✅ localStorage key
 const STORAGE_KEY = 'admin_profile_data';
 
-// ✅ Default profile data
 const DEFAULT_FORM = {
   firstName: "Admin", lastName: "User",
   email: "admin@example.com", phone: "+91 98765 43210",
   location: "Hyderabad, India", role: "Super Admin", bio: "",
 };
 
-// ✅ localStorage lo unna data load chey
 function loadProfile() {
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
@@ -145,7 +149,6 @@ function loadProfile() {
   } catch { return null; }
 }
 
-// ✅ localStorage lo save chey
 function saveToStorage(data) {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
@@ -169,12 +172,24 @@ function ArchLogo({ size = 38 }) {
   );
 }
 
+
+function LogoutIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2"
+      strokeLinecap="round" strokeLinejoin="round">
+      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+      <polyline points="16 17 21 12 16 7"/>
+      <line x1="21" y1="12" x2="9" y2="12"/>
+    </svg>
+  );
+}
+
 export default function AdminProfile({
   totalUsers    = 0,
   totalBookings = 0,
+  onLogout,           
 }) {
 
-  // ✅ Page load ayinappudu localStorage check chey — data unte load, lekapote default
   const [form, setForm] = useState(() => loadProfile() || DEFAULT_FORM);
   const [pwd,  setPwd]  = useState({ current: "", newpwd: "", confirm: "" });
   const [toast, setToast] = useState("");
@@ -190,20 +205,30 @@ export default function AdminProfile({
     setTimeout(() => setToast(""), 3000);
   };
 
-  // ✅ Profile Save — localStorage lo persist avutundi
+  
+  const handleLogout = () => {
+    showToast("👋 Logging out...");
+    setTimeout(() => {
+      if (onLogout) {
+        onLogout();
+      } else {
+        
+        window.location.href = "/";
+      }
+    }, 800);
+  };
+
   const saveProfileData = () => {
     saveToStorage(form);
     showToast("✅ Profile updated successfully!");
   };
 
-  // ✅ Cancel — last saved data ki reset avutundi
   const cancelProfile = () => {
     const saved = loadProfile() || DEFAULT_FORM;
     setForm(saved);
     showToast("↩️ Changes reverted!");
   };
 
-  // ✅ Password Update
   const savePassword = () => {
     if (!pwd.current) { showToast("⚠️ Enter current password!"); return; }
     if (!pwdRules.every(r => r.ok)) { showToast("⚠️ Meet all password requirements!"); return; }
@@ -218,9 +243,22 @@ export default function AdminProfile({
     { label: "Passwords match",  ok: pwd.newpwd && pwd.newpwd === pwd.confirm },
   ];
 
+  
   const STATS = [
-    { ico: "👥", bg: "#eef2ff", n: totalUsers, l: "Total Users",    badge: totalUsers > 0 ? `${totalUsers} users` : "No data" },
-    { ico: "🏗️", bg: "#fef3c7", n: 6,          l: "Building Types", badge: "All 6 active" },
+    {
+      ico: "👥", bg: "#eef2ff",
+      n: totalUsers,
+      l: "Total Users",
+      badge: totalUsers > 0 ? `${totalUsers} user${totalUsers !== 1 ? "s" : ""}` : "No data",
+      badgeGreen: totalUsers > 0,
+    },
+    {
+      ico: "🏗️", bg: "#fef3c7",
+      n: 6,
+      l: "Building Types",
+      badge: "All 6 active",
+      badgeGreen: true,
+    },
   ];
 
   return (
@@ -242,15 +280,21 @@ export default function AdminProfile({
               </div>
             </div>
 
-            <div className="pf-band-stats">
+            
+            <div className="pf-band-top-right">
               <div className="pf-band-stat">
-                <div className="pf-band-stat-n">{totalUsers || 0}</div>
+                <div className="pf-band-stat-n">{totalUsers}</div>
                 <div className="pf-band-stat-l">Users</div>
               </div>
               <div className="pf-band-stat">
                 <div className="pf-band-stat-n">6</div>
                 <div className="pf-band-stat-l">Buildings</div>
               </div>
+              
+              <button className="pf-logout-btn" onClick={handleLogout}>
+                <LogoutIcon />
+                <span className="logout-label">Logout</span>
+              </button>
             </div>
 
             <div className="pf-band-deco">
@@ -262,7 +306,6 @@ export default function AdminProfile({
 
           <div className="pf-cover-body">
             <div className="pf-avatar-wrap">
-              {/* ✅ Avatar — first name first letter auto update */}
               <div className="pf-avatar" onClick={scrollToEdit}>
                 {form.firstName ? form.firstName.charAt(0).toUpperCase() : "A"}
                 <div className="pf-avatar-status" />
@@ -273,7 +316,6 @@ export default function AdminProfile({
               </button>
             </div>
 
-            {/* ✅ Name & Role — save chesina tarvata update avutundi */}
             <div className="pf-name">{form.firstName} {form.lastName}</div>
             <div className="pf-role-badge">⚡ {form.role}</div>
 
@@ -303,7 +345,7 @@ export default function AdminProfile({
           </div>
         </div>
 
-        {/* STATS */}
+        
         <div className="pf-stats-row">
           {STATS.map(s => (
             <div className="pf-stat" key={s.l}>
@@ -312,16 +354,18 @@ export default function AdminProfile({
                 <div className="pf-stat-n">{s.n}</div>
                 <div className="pf-stat-l">{s.l}</div>
               </div>
-              <span className="pf-stat-badge">{s.badge}</span>
+              <span className={s.badgeGreen ? "pf-stat-badge" : "pf-stat-badge-gray"}>
+                {s.badge}
+              </span>
             </div>
           ))}
         </div>
 
-        {/* EDIT PROFILE + CHANGE PASSWORD */}
+        
         <div ref={editRef} style={{ scrollMarginTop: "1rem" }}>
           <div className="pf-cols">
 
-            {/* ── Edit Profile ── */}
+           
             <div className="pf-card pf-card-full">
               <div className="pf-card-head">
                 <div className="pf-card-title">
@@ -373,15 +417,13 @@ export default function AdminProfile({
                   </div>
                 </div>
                 <div className="pf-form-actions">
-                  {/* ✅ Cancel — localStorage lo save chesina data ki reset */}
                   <button className="pf-cancel-btn" onClick={cancelProfile}>Cancel</button>
-                  {/* ✅ Save — localStorage lo persist */}
                   <button className="pf-save-btn" onClick={saveProfileData}>💾 Save Changes</button>
                 </div>
               </div>
             </div>
 
-            {/* ── Change Password ── */}
+            
             <div className="pf-card pf-card-full">
               <div className="pf-card-head">
                 <div className="pf-card-title">
@@ -429,7 +471,6 @@ export default function AdminProfile({
           </div>
         </div>
 
-        {/* ✅ Toast */}
         {toast && (
           <div className="pf-toast">
             <div className="pf-toast-dot" />

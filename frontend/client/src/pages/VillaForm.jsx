@@ -46,15 +46,15 @@ function VillaHouse() {
         .header { background:#3d5164; color:white; padding:20px; text-align:center; font-size:26px; font-weight:bold; }
         .back-btn { position:absolute; left:20px; top:18px; background:#2c3e50; color:white; border:none; padding:8px 15px; border-radius:5px; cursor:pointer; }
         .section { background:white; margin:25px; padding:25px; border-radius:8px; box-shadow:0 0 10px rgba(0,0,0,0.15); }
-        .top { display:flex; gap:30px; }
-        .left { flex:1; }
+        .top { display:flex; gap:30px; flex-wrap: wrap; }
+        .left { flex:1; min-width: 300px; }
         .left img { width:100%; border-radius:8px; }
-        .right { flex:1; display:flex; justify-content:space-between; align-items:flex-start; }
+        .right { flex:1; min-width: 300px; display:flex; justify-content:space-between; align-items:flex-start; }
         .floor { text-align:center; }
-        .floor img { width:600px; border-radius:8px; }
+        .floor img { width: 100%; max-width: 600px; height: auto; border-radius:8px; }
         h2 { color:#2c3e50; margin-top:25px; }
         p { line-height:1.8; color:#333; }
-        .checkbox-section { margin:25px; padding:20px; background:white; border-radius:8px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 0 10px rgba(0,0,0,0.15); }
+        .checkbox-section { margin:25px; padding:20px; background:white; border-radius:8px; display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; gap: 15px; box-shadow:0 0 10px rgba(0,0,0,0.15); }
         .approve-btn { background:#2ecc71; border:none; padding:12px 28px; color:white; font-size:16px; border-radius:6px; cursor:pointer; }
         .approve-btn:disabled { background:gray; cursor:not-allowed; }
       `}</style>

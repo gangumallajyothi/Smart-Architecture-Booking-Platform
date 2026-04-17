@@ -72,7 +72,7 @@ function Homepage() {
 
         .card-container {
           display: grid;
-          grid-template-columns: repeat(3, 320px);
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
           gap: 40px;
           padding: 40px;
           justify-content: center;

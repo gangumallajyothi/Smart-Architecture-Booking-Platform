@@ -122,7 +122,7 @@ export default function CafeCoffeeRestaurantForm() {
         .popup.error { background:red; }
         .popup.success { background:green; }
         .topCards { display:flex; gap:20px; margin-top:30px; }
-        .imageCard { flex:1; background:white; border-radius:10px; padding:20px; box-shadow:0 4px 10px rgba(0,0,0,0.2); text-align:center; }
+        .imageCard { flex:1; min-width: 300px; background:white; border-radius:10px; padding:20px; box-shadow:0 4px 10px rgba(0,0,0,0.2); text-align:center; }
         .imageCard img { width:100%; height:70vh; border-radius:8px; }
         .contentCard { background:white; margin-top:30px; padding:30px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.2); }
         .contentCard h3 { color: red; margin-top:20px; }

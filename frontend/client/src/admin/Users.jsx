@@ -144,13 +144,12 @@ export default function Users({ onDataChange }) {
     );
   });
 
-  // ── Delete ──────────────────────────────────────────────────
+  
   function doDelete() {
     const newList = users.filter(u => (u._id || u.id) !== confirmId);
     updateUsers(newList);
     setConfirmId(null);
-    // fetch(`http://localhost:5000/api/users/${confirmId}`, { method:'DELETE' });
-  }
+   
 
   const confirmUser = users.find(u => (u._id || u.id) === confirmId);
 
@@ -254,3 +253,4 @@ export default function Users({ onDataChange }) {
     </>
   );
 }
+};

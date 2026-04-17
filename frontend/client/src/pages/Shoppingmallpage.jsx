@@ -89,7 +89,7 @@ background:#e74c3c;
 
 .card-container{
 display:grid;
-grid-template-columns:repeat(3,1fr);
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 gap:25px;
 padding:30px 50px 60px;
 justify-items:center;

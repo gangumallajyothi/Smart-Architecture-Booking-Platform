@@ -1,17 +1,34 @@
-const express = require("express");
+require("dotenv").config({ path: __dirname + "/.env" });
+
+console.log("ENV FILE EXISTS:", require("fs").existsSync(__dirname + "/.env"));
+console.log("ENV CHECK:", process.env.MONGO_URI);
+
+const express  = require("express");
 const mongoose = require("mongoose");
-const cors = require("cors");
-const User = require("./models/User");
+const cors     = require("cors");
+const bcrypt   = require("bcryptjs");
+
+const User          = require("./models/User");
 const bookingRoutes = require("./routes/bookingRoutes");
 
 const app = express();
+
+// Middleware
 app.use(cors());
 app.use(express.json());
+
+// Routes
 app.use("/api/bookings", bookingRoutes);
 
-mongoose.connect("mongodb://127.0.0.1:27017/architectureDB")
-  .then(() => console.log("MongoDB Connected"))
-  .catch(err => console.log(err));
+// ─── DB Connect ───────────────────────────────────────────
+mongoose
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
+  .then(() => console.log("✅ MongoDB Connected"))
+  .catch(err => console.log("❌ DB Error:", err.message));
+
 
 // ================= REGISTER =================
 app.post("/api/register", async (req, res) => {
@@ -23,52 +40,78 @@ app.post("/api/register", async (req, res) => {
       return res.status(400).json({ error: "User already exists" });
     }
 
-    const user = new User({ name, email, password, phone, projectType, role: "user" });
-    await user.save();
+    // ✅ Direct save — User.js pre('save') auto hash chestundi
+    const user = new User({
+      name,
+      email,
+      password,
+      phone,
+      projectType,
+      role: "user"
+    });
 
+    await user.save();
     res.json({ message: "Registered Successfully" });
 
   } catch (err) {
-    res.status(500).json({ error: "Registration Failed" });
+    console.error("Register error:", err.message);
+    res.status(500).json({ error: err.message });
   }
 });
 
 
+// ================= LOGIN =================
 app.post("/api/login", async (req, res) => {
   try {
     const { email, password } = req.body;
 
     const user = await User.findOne({ email });
-
     if (!user) {
       return res.status(400).json({ error: "User not found" });
     }
 
-    if (user.password !== password) {
+    let isMatch = false;
+    
+    // Check if the password was saved as plaintext (before the hashing pre-hook)
+    if (user.password && !user.password.startsWith('$2a$') && !user.password.startsWith('$2b$')) {
+      isMatch = (password === user.password);
+      
+      // Auto-migrate standard plaintext to Bcrypt Hash inside the DB for future secure logins
+      if (isMatch) {
+        user.password = password;
+        await user.save();
+      }
+    } else {
+      isMatch = await bcrypt.compare(password, user.password);
+    }
+
+    if (!isMatch) {
       return res.status(400).json({ error: "Wrong password" });
     }
 
-    console.log("User found:", user); 
-
-    res.json({ 
-      message: "Login Success", 
-      role: user.role, 
-      name: user.name || user.email  
+    res.json({
+      message: "Login Success",
+      role: user.role,
+      name: user.name || user.email
     });
 
   } catch (err) {
+    console.error("Login error:", err.message);
     res.status(500).json({ error: "Login Failed" });
   }
 });
+
+
 // ================= GET ALL USERS =================
 app.get("/api/users", async (req, res) => {
   try {
-    const users = await User.find();
+    const users = await User.find().select("-password");
     res.json(users);
   } catch (err) {
     res.status(500).json({ error: "Failed to fetch users" });
   }
 });
+
 
 // ================= DELETE USER =================
 app.delete("/api/users/:id", async (req, res) => {
@@ -80,6 +123,10 @@ app.delete("/api/users/:id", async (req, res) => {
   }
 });
 
-app.listen(5000, () => {
-  console.log("Server running on port 5000");
+
+// ─── Start Server ─────────────────────────────────────────
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
 });

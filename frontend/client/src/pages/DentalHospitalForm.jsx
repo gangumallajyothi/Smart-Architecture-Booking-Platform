@@ -42,7 +42,7 @@ function DentalHospitalForm() {
         .backBtn { background:green; color:white; border:none; padding:10px 20px; font-size:16px; border-radius:6px; cursor:pointer; margin:20px 0; }
         .backBtn:hover { background:darkred; }
         .cards { display:flex; gap:20px; }
-        .card { background:white; padding:20px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.2); flex:1; }
+        .card { background:white; padding:20px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.2); flex:1; min-width: 300px; }
         .card img { width:100%; border-radius:8px; }
         .infoCard { background:white; margin-top:20px; padding:25px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.2); line-height:1.7; }
          .approveCard { margin-top:30px; background:white; padding:25px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.2); }

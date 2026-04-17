@@ -47,7 +47,7 @@ function OrthopedicHospitalForm() {
         .backBtn:hover { background:darkred; }
         .card { background:white; padding:20px; margin-bottom:25px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.1); }
         .imageRow { display:flex; gap:20px; }
-        .imageCard { flex:1; text-align:center; }
+        .imageCard { flex:1; min-width: 300px; text-align:center; }
         .imageCard img { width:90%; height:680px; border-radius:8px; }
         .textCard h2 { color:#003d99; margin-top:15px; }
         .textCard p { line-height:1.7; font-size:15px; }

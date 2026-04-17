@@ -83,7 +83,7 @@ function IndependentHouse() {
       <div style={{ display: "flex", gap: "20px", padding: "20px", flexWrap: "wrap" }}>
 
         <div style={{
-          flex: 1, background: "white", padding: "15px",
+          flex: 1, minWidth: "300px", background: "white", padding: "15px",
           borderRadius: "8px", boxShadow: "0 0 10px rgba(0,0,0,0.1)"
         }}>
           <h2>House Exterior View</h2>
@@ -93,7 +93,7 @@ function IndependentHouse() {
         </div>
 
         <div style={{
-          flex: 1, background: "white", padding: "15px",
+          flex: 1, minWidth: "300px", background: "white", padding: "15px",
           borderRadius: "8px", boxShadow: "0 0 10px rgba(0,0,0,0.1)"
         }}>
           <h2>Architecture Layout</h2>

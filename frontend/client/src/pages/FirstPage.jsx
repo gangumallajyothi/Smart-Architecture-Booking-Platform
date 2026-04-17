@@ -187,7 +187,7 @@ function FirstPage() {
       )}
 
       {/* Navbar */}
-      <div style={styles.navbar}>
+      <div className="responsive-navbar" style={styles.navbar}>
 
         <span style={styles.link} onClick={() => navigate("/register")}>
           Register
@@ -271,7 +271,7 @@ function FirstPage() {
       )}
 
       {/* Scrolling Heading */}
-      <div style={{
+      <div className="responsive-marquee" style={{
         ...styles.marquee,
         whiteSpace: "nowrap",
         overflow: "hidden",
@@ -289,6 +289,19 @@ function FirstPage() {
         @keyframes scroll-left {
           0% { transform: translateX(100%) }
           100% { transform: translateX(-100%) }
+        }
+        @media (max-width: 768px) {
+          .responsive-navbar {
+            flex-wrap: wrap !important;
+            justify-content: center !important;
+            right: 5px !important;
+            left: 5px !important;
+            top: 60px !important;
+            gap: 10px !important;
+          }
+          .responsive-marquee {
+            font-size: 24px !important;
+          }
         }
       `}</style>
 
