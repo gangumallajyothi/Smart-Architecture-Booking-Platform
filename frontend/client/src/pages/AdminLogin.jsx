@@ -19,9 +19,14 @@ export default function AdminLogin({ onLogin }) {
   };
 
   return (
-    <style>{`
+    <>
+      <style>{`
         @media (max-width: 600px) {
           .card-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          width: 100%;
+          box-sizing: border-box;
             grid-template-columns: 1fr !important;
             padding: 15px !important;
             gap: 20px !important;
@@ -31,29 +36,30 @@ export default function AdminLogin({ onLogin }) {
             max-width: 100% !important;
           }
         }
-        `}</style>
-    <div style={{ maxWidth: 400, margin: 'auto', padding: 20 }}>
-      <h2>Admin Login</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          required
-          style={{ width: '100%', marginBottom: 10 }}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          required
-          style={{ width: '100%', marginBottom: 10 }}
-        />
-        <button type="submit" style={{ width: '100%' }}>Login</button>
-        {error && <div style={{ color: 'red', marginTop: 10 }}>{error}</div>}
-      </form>
-    </div>
+      `}</style>
+      <div style={{ maxWidth: 400, margin: 'auto', padding: 20 }}>
+        <h2>Admin Login</h2>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            required
+            style={{ width: '100%', marginBottom: 10 }}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            required
+            style={{ width: '100%', marginBottom: 10 }}
+          />
+          <button type="submit" style={{ width: '100%' }}>Login</button>
+          {error && <div style={{ color: 'red', marginTop: 10 }}>{error}</div>}
+        </form>
+      </div>
+    </>
   );
 }

@@ -12,6 +12,77 @@ const sections = [
   { key: 'bookings',  label: 'Bookings',         icon: '📅' },
   { key: 'profile',   label: 'Profile',          icon: '👤' },
 ];
+const css = `
+  .ad-wrap {
+    display: flex;
+    min-height: 100vh;
+    background: #f8fafc;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .ad-sidebar {
+    width: 260px;
+    background: #ffffff;
+    border-right: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 16px;
+    flex-shrink: 0;
+  }
+
+  .ad-logo {
+    font-size: 24px;
+    font-weight: 800;
+    color: #111;
+    margin-bottom: 48px;
+    padding-left: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    letter-spacing: -1px;
+  }
+
+  .ad-nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    margin-bottom: 8px;
+    border: none;
+    background: transparent;
+    color: #64748b;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+    width: 100%;
+  }
+
+  .ad-nav:hover {
+    background: #f8fafc;
+    color: #1d4ed8;
+  }
+
+  .ad-nav.active {
+    background: #eff6ff;
+    color: #1d4ed8;
+  }
+
+  .ad-nav-icon {
+    font-size: 18px;
+  }
+
+  .ad-main {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+  }
+
+  @media (max-width: 1024px) {
+    .ad-sidebar { width: 220px; }
+  }
 
   @media (max-width: 768px) {
     .ad-wrap { flex-direction: column; }
@@ -24,17 +95,18 @@ const sections = [
     .ad-nav { width: auto; flex: 1; min-width: 100px; padding: 6px 10px; font-size: 12px; }
     .ad-main { padding: 15px; }
   }
+
   .ad-logout {
     margin-top: auto;
-    background: #fee2e2;
-    color: #dc2626;
-    border-color: #fecaca;
+    color: #ef4444;
+    font-weight: 700;
   }
   .ad-logout:hover {
-    background: #fecaca;
-    transform: none;
+    background: #fef2f2;
+    color: #dc2626;
   }
 `;
+
 
 export default function AdminDashboard() {
   const [section, setSection] = useState('dashboard');

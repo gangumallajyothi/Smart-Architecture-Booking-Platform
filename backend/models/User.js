@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
   role:        { type: String, default: "user" }
 });
 
-// ✅ Idi add chesanu — save cheseyatappudu auto hash avutundi
+
 userSchema.pre("save", async function(next) {
   if (!this.isModified("password")) return next();
   this.password = await bcrypt.hash(this.password, 12);

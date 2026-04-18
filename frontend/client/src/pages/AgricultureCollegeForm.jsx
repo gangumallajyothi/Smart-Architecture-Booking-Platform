@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { API_BASE_URL } from "../apiConfig";
 import { useNavigate } from "react-router-dom";
 import AgricultureCollegeImg from "./images/AgricultureCollegeImg.png";
 import AgricultureCollegeArchitecture from "./images/AgricultureCollegeArchitecture.png";
@@ -17,7 +18,7 @@ function AgricultureCollegeForm() {
       const userName = localStorage.getItem("userName") || "Unknown";
       const userEmail = localStorage.getItem("userEmail") || "Unknown";
 
-      await fetch("http://localhost:5000/api/bookings", {
+      await fetch(`${API_BASE_URL}/bookings`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -119,9 +120,12 @@ function AgricultureCollegeForm() {
         .checkboxText { font-size:18px; }
         .approveButton { background:green; color:white; border:none; padding:10px 22px; border-radius:6px; cursor:pointer; }
         .approveButton:hover { background:darkgreen; }
-      `}
         @media (max-width: 600px) {
           .card-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          width: 100%;
+          box-sizing: border-box;
             grid-template-columns: 1fr !important;
             padding: 15px !important;
             gap: 20px !important;
@@ -131,8 +135,7 @@ function AgricultureCollegeForm() {
             max-width: 100% !important;
           }
         }
-        
-        </style>
+      `}</style>
 
     </div>
   );

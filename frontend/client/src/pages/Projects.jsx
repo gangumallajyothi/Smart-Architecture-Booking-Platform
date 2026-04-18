@@ -32,6 +32,10 @@ export default function Projects() {
     <style>{`
         @media (max-width: 600px) {
           .card-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          width: 100%;
+          box-sizing: border-box;
             grid-template-columns: 1fr !important;
             padding: 15px !important;
             gap: 20px !important;

@@ -68,15 +68,14 @@ function FirstPage() {
 
     navbar: {
       position: "absolute",
-      top: "10px",
-      right: "10px",
-      left: "10px",
+      top: "15px",
+      right: "15px",
       display: "flex",
-      justifyContent: "space-between",
+      justifyContent: "flex-end",
       alignItems: "center",
-      gap: "10px",
-      border: "2px solid orange",
-      padding: "8px 15px",
+      gap: "15px",
+      border: "3px solid #FFC107",
+      padding: "10px 20px",
       borderRadius: "10px",
       background: "rgba(255,255,255,0.9)",
       zIndex: "100"
@@ -138,7 +137,7 @@ function FirstPage() {
 
     marquee: {
       position: "absolute",
-      top: "50%",
+      top: "55%", /* Adjusted slightly lower to align with building image center-bottom */
       transform: "translateY(-50%)",
       fontSize: "24px",
       color: "darkorange",
@@ -156,21 +155,22 @@ function FirstPage() {
 
     calculatorIcon: {
       position: "absolute",
-      left: "10px",
-      bottom: "20px",
-      height: "50px",
+      left: "15px",
+      top: "15px",
+      height: "45px",
       cursor: "pointer",
       zIndex: "100",
       background: "white",
-      borderRadius: "50%",
-      padding: "5px",
-      boxShadow: "0 0 10px rgba(0,0,0,0.3)"
+      borderRadius: "6px",
+      padding: "4px",
+      boxShadow: "0 0 10px rgba(0,0,0,0.3)",
+      border: "2px solid #333"
     },
 
     calculatorMenu: {
       position: "absolute",
-      bottom: "80px",
-      left: "10px",
+      top: "70px",
+      left: "15px",
       background: "white",
       padding: "10px 20px",
       borderRadius: "6px",

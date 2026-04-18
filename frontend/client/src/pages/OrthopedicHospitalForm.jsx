@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { API_BASE_URL } from "../apiConfig";
 import { useNavigate } from "react-router-dom";
 import OrthopedicHospitalImg from "./images/OrthopedicHospitalImg.png";
 import OrthopedicArchitecture from "./images/OrthopedicArchitecture.png";
@@ -19,7 +20,7 @@ function OrthopedicHospitalForm() {
         const userName = localStorage.getItem("userName") || "Unknown";
         const userEmail = localStorage.getItem("userEmail") || "Unknown";
 
-        await fetch("http://localhost:5000/api/bookings", {
+        await fetch(`${API_BASE_URL}/bookings`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -56,9 +57,12 @@ function OrthopedicHospitalForm() {
         .checkboxArea input { width:25px; height:25px; }
         .approveBtn { background:#003d99; color:white; border:none; padding:12px 20px; border-radius:6px; cursor:pointer; font-size:16px; }
         .approveBtn:hover { background:#001f4d; }
-      `}
-        @media (max-width: 600px) {
+              @media (max-width: 600px) {
           .card-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          width: 100%;
+          box-sizing: border-box;
             grid-template-columns: 1fr !important;
             padding: 15px !important;
             gap: 20px !important;
@@ -68,8 +72,7 @@ function OrthopedicHospitalForm() {
             max-width: 100% !important;
           }
         }
-        
-        </style>
+      `}</style>
 
       <button className="backBtn" onClick={goBack}>← Back</button>
 

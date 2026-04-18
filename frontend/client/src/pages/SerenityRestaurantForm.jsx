@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { API_BASE_URL } from "../apiConfig";
 import { useNavigate } from "react-router-dom";
 import SerenityRestaurantImg from "./images/SerenityRestaurantImg.png";
 import SerenityRestaurantArchitecture from "./images/SerenityRestaurantArchitecture.png";
@@ -23,7 +24,7 @@ export default function SerenityRestaurantForm() {
       const userName = localStorage.getItem("userName") || "Unknown";
       const userEmail = localStorage.getItem("userEmail") || "Unknown";
 
-      await fetch("http://localhost:5000/api/bookings", {
+      await fetch(`${API_BASE_URL}/bookings`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -130,9 +131,12 @@ export default function SerenityRestaurantForm() {
         .checkboxRow { display:flex; gap:10px; align-items:flex-start; }
         .approveBtn { margin-top:1px; margin-left:1000px; background: red; font-weight:bold; color:white; border:none; padding:10px 30px; border-radius:6px; font-size:16px; cursor:pointer; }
         .approveBtn.active { background:darkgreen; }
-      `}
-        @media (max-width: 600px) {
+              @media (max-width: 600px) {
           .card-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          width: 100%;
+          box-sizing: border-box;
             grid-template-columns: 1fr !important;
             padding: 15px !important;
             gap: 20px !important;
@@ -142,8 +146,7 @@ export default function SerenityRestaurantForm() {
             max-width: 100% !important;
           }
         }
-        
-        </style>
+      `}</style>
 
     </div>
   );

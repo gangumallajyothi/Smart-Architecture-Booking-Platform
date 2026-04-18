@@ -18,28 +18,36 @@ function Homepage() {
       <style>{`
         body {
           font-family: Arial, sans-serif;
-          background-color: #f4f6f8;
+          background-color: #f0f4f8;
           margin: 0;
           padding: 0;
         }
 
         h1 {
           text-align: center;
-          margin: 20px 0;
+          margin: 40px 0 20px;
           color: #2c3e50;
+          font-size: 32px;
+          font-weight: bold;
         }
 
         .back-btn {
           position: fixed;
           top: 15px;
           left: 15px;
-          padding: 10px 18px;
-          background-color: #2ecc71;
+          padding: 10px 20px;
+          background-color: #27ae60;
           color: white;
           border: none;
           border-radius: 5px;
           cursor: pointer;
+          font-weight: bold;
           z-index: 1000;
+          box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .back-btn:hover {
+          background-color: #219150;
         }
 
         /* ✅ Calculator icon - top RIGHT corner */
@@ -50,6 +58,11 @@ function Homepage() {
           height: 40px;
           cursor: pointer;
           z-index: 1000;
+          background: white;
+          padding: 4px;
+          border-radius: 6px;
+          box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+          border: 1px solid #ddd;
         }
 
         /* ✅ Menu - top right below icon */
@@ -72,70 +85,93 @@ function Homepage() {
 
         .card-container {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-          gap: 40px;
-          padding: 20px 10px;
-          justify-content: center;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: 30px;
+          padding: 20px 40px 80px;
+          max-width: 1200px;
+          margin: 0 auto;
+          width: 100%;
+          box-sizing: border-box;
         }
 
         .card {
+          width: 100%;
+          max-width: 100%;
           background: #ffffff;
-          border-radius: 10px;
-          height: auto; min-height: 330px;
-          box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+          border-radius: 15px;
+          height: auto;
+          min-height: 350px;
+          box-shadow: 0 8px 25px rgba(0,0,0,0.1);
           text-align: center;
-          transition: transform 0.3s;
+          transition: transform 0.3s, box-shadow 0.3s;
+          overflow: hidden;
+          box-sizing: border-box;
         }
 
         .card:hover {
-          transform: scale(1.05);
+          transform: translateY(-5px);
+          box-shadow: 0 12px 30px rgba(0,0,0,0.15);
         }
 
         .card img {
           width: 100%;
-          height: 200px;
+          height: 180px;
           object-fit: cover;
-          border-radius: 10px 10px 0 0;
+          display: block;
         }
 
         .card h3 {
-          margin: 10px 0;
-          color: #34495e;
+          margin: 15px 0 8px;
+          color: #2c3e50;
+          font-size: 18px;
+          padding: 0 10px;
         }
 
         .card p {
-          padding: 0 12px;
-          color: #555;
+          padding: 0 15px;
+          color: #666;
           font-size: 14px;
+          line-height: 1.4;
+          margin-bottom: 15px;
         }
 
         .card button {
-          margin: 15px 0;
-          padding: 8px 16px;
+          margin-bottom: 20px;
+          padding: 10px 25px;
           border: none;
           background-color: #3498db;
           color: white;
-          border-radius: 5px;
+          border-radius: 6px;
           cursor: pointer;
+          font-weight: bold;
+          font-size: 14px;
+          transition: background 0.3s;
         }
 
         .card button:hover {
           background-color: #2980b9;
         }
-      `}
+
         @media (max-width: 600px) {
           .card-container {
             grid-template-columns: 1fr !important;
-            padding: 15px !important;
+            padding: 15px 12px 80px !important;
             gap: 20px !important;
           }
           .card {
-            width: 100% !important;
             max-width: 100% !important;
           }
+          .card img {
+            height: 160px;
+          }
+          h1 {
+            font-size: 20px !important;
+            padding: 0 15px;
+            margin-top: 70px;
+            margin-bottom: 10px;
+          }
         }
-        
-        </style>
+      `}</style>
 
       {/* BACK - top left */}
       <button className="back-btn" onClick={() => navigate("/")}>

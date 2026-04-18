@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { API_BASE_URL } from "../apiConfig";
 import { useNavigate } from "react-router-dom";
 import GFourResidentialApartmentImg from "./images/GFourResidentialApartmentImg.png";
 import GFourResidentialApartmentArchitecture from "./images/GFourResidentialApartmentArchitecture.png";
@@ -17,7 +18,7 @@ function GFourApartmentForm() {
       const userName = localStorage.getItem("userName") || "Unknown";
       const userEmail = localStorage.getItem("userEmail") || "Unknown";
 
-      await fetch("http://localhost:5000/api/bookings", {
+      await fetch(`${API_BASE_URL}/bookings`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -117,9 +118,12 @@ function GFourApartmentForm() {
         .checkboxText { font-size:18px; }
         .approveButton { background: purple; color:white; border:none; padding:10px 22px; border-radius:6px; cursor:pointer; }
         .approveButton:hover { background: brown; }
-      `}
-        @media (max-width: 600px) {
+              @media (max-width: 600px) {
           .card-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          width: 100%;
+          box-sizing: border-box;
             grid-template-columns: 1fr !important;
             padding: 15px !important;
             gap: 20px !important;
@@ -129,8 +133,7 @@ function GFourApartmentForm() {
             max-width: 100% !important;
           }
         }
-        
-        </style>
+      `}</style>
 
     </div>
   );

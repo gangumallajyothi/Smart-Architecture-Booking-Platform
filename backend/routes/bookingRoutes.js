@@ -1,70 +1,52 @@
 const express = require("express");
-const router = express.Router();
-const User = require("../models/User");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+const router  = express.Router();
+const Booking = require("../models/Booking");
 
-// ✅ REGISTER
-router.post("/register", async (req, res) => {
+// ✅ CREATE BOOKING (From Frontend Forms)
+router.post("/", async (req, res) => {
   try {
-    const { name, email, password, phone, projectType } = req.body;
-
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
-      return res.status(400).json({ message: "Email already registered" });
+    const { userName, userEmail, projectType, status, date } = req.body;
+    
+    if (!userName || !userEmail || !projectType) {
+      return res.status(400).json({ error: "Missing required booking details" });
     }
 
-    const user = new User({ name, email, password, phone, projectType });
-    await user.save(); // pre('save') auto hash chestundi
+    const newBooking = new Booking({
+      userName,
+      userEmail,
+      projectType,
+      status: status || "Pending",
+      date: date || new Date()
+    });
 
-    res.json({ message: "✅ User Registered Successfully" });
+    await newBooking.save();
+    res.status(201).json({ message: "✅ Booking successful!", booking: newBooking });
 
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.error("Booking Create Error:", err.message);
+    res.status(500).json({ error: "Failed to create booking" });
   }
 });
 
-// ✅ LOGIN
-router.post("/login", async (req, res) => {
+// ✅ GET ALL BOOKINGS (For Admin Dashboard)
+router.get("/", async (req, res) => {
   try {
-    const { email, password } = req.body;
-
-    const user = await User.findOne({ email });
-    if (!user) {
-      return res.status(401).json({ message: "❌ Email not found" });
-    }
-
-    let isMatch = false;
-
-    // Handle legacy plaintext passwords
-    if (user.password && !user.password.startsWith('$2a$') && !user.password.startsWith('$2b$')) {
-      isMatch = (password === user.password);
-      if (isMatch) {
-        user.password = password;
-        await user.save();
-      }
-    } else {
-      isMatch = await bcrypt.compare(password, user.password);
-    }
-
-    if (!isMatch) {
-      return res.status(401).json({ message: "❌ Password incorrect" });
-    }
-
-    const token = jwt.sign(
-      { id: user._id, role: user.role },
-      process.env.JWT_SECRET,
-      { expiresIn: "7d" }
-    );
-
-    res.json({
-      message: "✅ Login successful!",
-      token,
-      user: { name: user.name, email: user.email, role: user.role }
-    });
-
+    const bookings = await Booking.find().sort({ date: -1 });
+    res.json(bookings);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    console.error("Fetch Bookings Error:", err.message);
+    res.status(500).json({ error: "Failed to fetch bookings" });
+  }
+});
+
+// ✅ DELETE BOOKING (For Admin Dashboard)
+router.delete("/:id", async (req, res) => {
+  try {
+    await Booking.findByIdAndDelete(req.params.id);
+    res.json({ message: "✅ Booking Deleted Successfully" });
+  } catch (err) {
+    console.error("Delete Booking Error:", err.message);
+    res.status(500).json({ error: "Failed to delete booking" });
   }
 });
 

@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react';
+import { API_BASE_URL } from "../apiConfig";
 import Users from './Users';
 import Projects from './Projects';
 import Bookings from './Bookings';
@@ -14,8 +15,8 @@ const css = `
   @import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap');
 
   .dh-wrap { font-family:'DM Sans',sans-serif; padding:4px 0; }
-
-  .dh-greeting { margin-bottom:32px; animation:dh-fadeDown 0.5s ease both; }
+  .dh-greeting { margin-bottom: 28px; animation:dh-fadeDown 0.5s ease both; }
+  .dh-greeting h1 { font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800; color: #111; letter-spacing: -0.5px; }
   @keyframes dh-fadeDown {
     from{opacity:0;transform:translateY(-14px)}
     to  {opacity:1;transform:translateY(0)}
@@ -176,6 +177,8 @@ function Card({ data, count, onClick }) {
   );
 }
 
+// API Helper
+
 export default function DashboardHome({ onNavigate, liveBookingCount, liveUserCount }) {
   const [time, setTime]                 = useState(new Date());
   const [userCount, setUserCount]       = useState(null);
@@ -188,7 +191,7 @@ export default function DashboardHome({ onNavigate, liveBookingCount, liveUserCo
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/users")
+    fetch(`${API_BASE_URL}/users`)
       .then(res => res.json())
       .then(data => setUserCount(Array.isArray(data) ? data.length : 0))
       .catch(() => setUserCount(0));
@@ -196,7 +199,7 @@ export default function DashboardHome({ onNavigate, liveBookingCount, liveUserCo
 
   
   useEffect(() => {
-    fetch("http://localhost:5000/api/bookings")
+    fetch(`${API_BASE_URL}/bookings`)
       .then(res => res.json())
       .then(data => {
         const deletedIds = getDeletedIds();
@@ -229,7 +232,7 @@ export default function DashboardHome({ onNavigate, liveBookingCount, liveUserCo
     {
       cls:'c1', title:'Users',
       desc:'Manage all registered users, roles and permissions.',
-      icon:'👥', bar:'linear-gradient(90deg,#f97316,#fb923c)',
+      icon:'👥', bar:'#f97316',
       iconBg:'#fff7ed', arrowBg:'#fff7ed', arrowColor:'#f97316',
       countLabel:'Total users', countColor:'#f97316',
       count: displayUserCount,
@@ -237,7 +240,7 @@ export default function DashboardHome({ onNavigate, liveBookingCount, liveUserCo
     {
       cls:'c2', title:'Projects',
       desc:'View and track all plans and building projects.',
-      icon:'📁', bar:'linear-gradient(90deg,#3b82f6,#60a5fa)',
+      icon:'📁', bar:'#3b82f6',
       iconBg:'#eff6ff', arrowBg:'#eff6ff', arrowColor:'#3b82f6',
       countLabel:'Active projects', countColor:'#3b82f6',
       count: 6,
@@ -245,7 +248,7 @@ export default function DashboardHome({ onNavigate, liveBookingCount, liveUserCo
     {
       cls:'c3', title:'Bookings',
       desc:'Review pending and approved booking requests.',
-      icon:'📅', bar:'linear-gradient(90deg,#22c55e,#4ade80)',
+      icon:'📅', bar:'#22c55e',
       iconBg:'#f0fdf4', arrowBg:'#f0fdf4', arrowColor:'#22c55e',
       countLabel:'Total bookings', countColor:'#22c55e',
       count: displayBookingCount,
@@ -254,8 +257,8 @@ export default function DashboardHome({ onNavigate, liveBookingCount, liveUserCo
 
   const STATS = [
     { icon:'👥', bg:'#fff7ed', label:'Total Users',    val: displayUserCount,    sub:'Registered accounts' },
-    { icon:'📅', bg:'#f0fdf4', label:'Total Bookings', val: displayBookingCount, sub:'All time bookings'   },
-    { icon:'📁', bg:'#eff6ff', label:'Total Projects',  val: 6,                  sub:'Building projects'   },
+    { icon:'📅', bg:'#eff6ff', label:'Total Bookings', val: displayBookingCount, sub:'All time bookings'   },
+    { icon:'📁', bg:'#fdf6ec', label:'Total Projects',  val: 6,                  sub:'Building projects'   },
   ];
 
   if (!onNavigate) {

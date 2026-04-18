@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { API_BASE_URL } from "../apiConfig";
 import { useNavigate } from "react-router-dom";
 import TriplexHouseImg from "./images/TriplexHouseImg.avif";
 import TriplexArchitecture from "./images/TriplexArchitecture.png";
@@ -21,7 +22,7 @@ function TriplexHouse() {
       const userName = localStorage.getItem("userName") || "Unknown";
       const userEmail = localStorage.getItem("userEmail") || "Unknown";
 
-      await fetch("http://localhost:5000/api/bookings", {
+      await fetch(`${API_BASE_URL}/bookings`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -55,9 +56,12 @@ function TriplexHouse() {
         .approvalBox { background:white; margin:20px; padding:20px; border-radius:10px; display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; gap: 15px; box-shadow:0 0 10px rgba(0,0,0,0.1); }
         .approveBtn { background:green; color:white; border:none; padding:12px 25px; font-size:16px; border-radius:6px; cursor:pointer; }
         .approveBtn:hover { background:#006400; }
-      `}
-        @media (max-width: 600px) {
+              @media (max-width: 600px) {
           .card-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          width: 100%;
+          box-sizing: border-box;
             grid-template-columns: 1fr !important;
             padding: 15px !important;
             gap: 20px !important;
@@ -67,8 +71,7 @@ function TriplexHouse() {
             max-width: 100% !important;
           }
         }
-        
-        </style>
+      `}</style>
 
       <div className="header">
         <button className="backBtn" onClick={goBack}>← Back</button>

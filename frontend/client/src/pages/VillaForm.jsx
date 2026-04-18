@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { API_BASE_URL } from "../apiConfig";
 import { useNavigate } from "react-router-dom";
 import VillaHouseImg from "./images/VillaHouseImg.jpeg";
 import VillaArchitecture from "./images/VillaArchitecture.png";
@@ -21,7 +22,7 @@ function VillaHouse() {
       const userName = localStorage.getItem("userName") || "Unknown";
       const userEmail = localStorage.getItem("userEmail") || "Unknown";
 
-      await fetch("http://localhost:5000/api/bookings", {
+      await fetch(`${API_BASE_URL}/bookings`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -57,9 +58,12 @@ function VillaHouse() {
         .checkbox-section { margin:25px; padding:20px; background:white; border-radius:8px; display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; gap: 15px; box-shadow:0 0 10px rgba(0,0,0,0.15); }
         .approve-btn { background:#2ecc71; border:none; padding:12px 28px; color:white; font-size:16px; border-radius:6px; cursor:pointer; }
         .approve-btn:disabled { background:gray; cursor:not-allowed; }
-      `}
-        @media (max-width: 600px) {
+              @media (max-width: 600px) {
           .card-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          width: 100%;
+          box-sizing: border-box;
             grid-template-columns: 1fr !important;
             padding: 15px !important;
             gap: 20px !important;
@@ -69,8 +73,7 @@ function VillaHouse() {
             max-width: 100% !important;
           }
         }
-        
-        </style>
+      `}</style>
 
       <div className="header">
         <button className="back-btn" onClick={goBack}>← Back</button>

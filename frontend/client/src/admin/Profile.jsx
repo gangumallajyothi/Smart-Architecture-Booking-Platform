@@ -23,18 +23,18 @@ const css = `
 .pf-page-title::before{content:'';width:4px;height:24px;background:linear-gradient(180deg,var(--pri),var(--pri3));border-radius:4px}
 
 .pf-cover-card{background:var(--card);border-radius:var(--r16);box-shadow:var(--sh2);overflow:hidden;margin-bottom:1.5rem;animation:pfFadeUp .5s ease both}
-.pf-cover-band{height:160px;background:linear-gradient(135deg,#1e1b4b 0%,#312e81 25%,#4f46e5 55%,#7c3aed 80%,#a855f7 100%);position:relative;overflow:hidden}
+.pf-cover-band{height:180px;background:linear-gradient(135deg,#312e81 0%,#4f46e5 50%,#7c3aed 100%);position:relative;overflow:hidden}
 .pf-cover-band::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.06) 1.5px,transparent 1.5px);background-size:24px 24px}
-.pf-cover-band::after{content:'';position:absolute;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(167,139,250,0.35) 0%,transparent 65%);top:-120px;right:-80px}
+.pf-cover-band::after{content:'';position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(167,139,250,0.2) 0%,transparent 70%);top:-150px;right:-100px}
 .pf-cover-shine{position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,0.04) 50%,transparent 70%);pointer-events:none}
 
-.pf-cover-logo{position:absolute;left:2rem;top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:14px;z-index:3}
-.pf-logo-ring{width:64px;height:64px;border-radius:18px;background:rgba(255,255,255,0.1);border:2px solid rgba(255,255,255,0.25);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 8px 24px rgba(0,0,0,0.25),inset 0 1px 0 rgba(255,255,255,0.2);animation:pfLogoFloat 4s ease-in-out infinite}
-.pf-logo-svg{width:38px;height:38px;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.3))}
-.pf-logo-text{display:flex;flex-direction:column;gap:2px}
-.pf-logo-name{font-size:1.15rem;font-weight:800;color:#fff;letter-spacing:0.02em;text-shadow:0 2px 8px rgba(0,0,0,0.3);line-height:1}
-.pf-logo-name span{color:#c4b5fd}
-.pf-logo-tag{font-size:0.65rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.55)}
+.pf-cover-logo{position:absolute;left:2.5rem;top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:18px;z-index:3}
+.pf-logo-ring{width:68px;height:68px;border-radius:20px;background:rgba(255,255,255,0.12);border:2px solid rgba(255,255,255,0.2);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 8px 32px rgba(0,0,0,0.2),inset 0 1px 0 rgba(255,255,255,0.2);animation:pfLogoFloat 4s ease-in-out infinite}
+.pf-logo-svg{width:42px;height:42px;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.3))}
+.pf-logo-text{display:flex;flex-direction:column;gap:3px}
+.pf-logo-name{font-size:1.35rem;font-weight:800;color:#fff;letter-spacing:0.01em;text-shadow:0 2px 10px rgba(0,0,0,0.3);line-height:1}
+.pf-logo-name span{color:#fff}
+.pf-logo-tag{font-size:0.7rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.7)}
 
 .pf-band-deco{position:absolute;bottom:14px;right:1.5rem;display:flex;gap:8px;z-index:2}
 .pf-band-ico{width:34px;height:34px;border-radius:var(--r8);background:rgba(255,255,255,0.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.18);display:flex;align-items:center;justify-content:center;font-size:0.9rem;transition:transform .3s,background .3s}
@@ -50,16 +50,16 @@ const css = `
 .pf-logout-btn svg{width:14px;height:14px;flex-shrink:0}
 
 .pf-cover-body{padding:0 2rem 2rem}
-.pf-avatar-wrap{display:flex;align-items:flex-end;justify-content:space-between;margin-top:-40px;margin-bottom:1.2rem}
-.pf-avatar{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#ef4444,#f97316);border:4px solid var(--card);box-shadow:var(--sh2);display:flex;align-items:center;justify-content:center;font-size:1.8rem;font-weight:700;color:#fff;position:relative;transition:transform .3s;cursor:pointer}
-.pf-avatar:hover{transform:scale(1.06)}
-.pf-avatar-status{position:absolute;bottom:4px;right:4px;width:14px;height:14px;border-radius:50%;background:var(--grn);border:2px solid var(--card)}
+.pf-avatar-wrap{display:flex;align-items:flex-end;justify-content:space-between;margin-top:-50px;margin-bottom:1.5rem}
+.pf-avatar{width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,#ff4d4d,#f97316);border:6px solid var(--card);box-shadow:var(--sh2);display:flex;align-items:center;justify-content:center;font-size:2.2rem;font-weight:700;color:#fff;position:relative;transition:transform .3s;cursor:pointer}
+.pf-avatar:hover{transform:scale(1.05)}
+.pf-avatar-status{position:absolute;bottom:6px;right:6px;width:18px;height:18px;border-radius:50%;background:var(--grn);border:3px solid var(--card)}
 .pf-edit-photo-btn{position:absolute;inset:0;border-radius:50%;background:rgba(0,0,0,0.45);display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:#fff;opacity:0;transition:opacity .25s}
 .pf-avatar:hover .pf-edit-photo-btn{opacity:1}
-.pf-btn-primary{display:inline-flex;align-items:center;gap:7px;background:var(--pri);color:#fff;font-size:0.82rem;font-weight:600;padding:0.55rem 1.3rem;border-radius:var(--r99);border:none;cursor:pointer;box-shadow:0 4px 14px rgba(79,70,229,0.35);transition:all .25s}
-.pf-btn-primary:hover{background:#4338ca;transform:translateY(-1px);box-shadow:0 6px 20px rgba(79,70,229,0.45)}
-.pf-name{font-size:1.25rem;font-weight:700;color:var(--ink);margin-bottom:0.2rem}
-.pf-role-badge{display:inline-flex;align-items:center;gap:5px;background:var(--pril);color:var(--pri);font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:0.28rem 0.8rem;border-radius:var(--r99);margin-bottom:1.2rem}
+.pf-btn-primary{display:inline-flex;align-items:center;gap:7px;background:#3b82f6;color:#fff;font-size:0.85rem;font-weight:700;padding:0.6rem 1.4rem;border-radius:var(--r99);border:none;cursor:pointer;box-shadow:0 4px 14px rgba(59,130,246,0.3);transition:all .25s}
+.pf-btn-primary:hover{background:#2563eb;transform:translateY(-1px);box-shadow:0 6px 20px rgba(59,130,246,0.4)}
+.pf-name{font-size:1.5rem;font-weight:800;color:var(--ink);margin-bottom:0.3rem}
+.pf-role-badge{display:inline-flex;align-items:center;gap:5px;background:#f1f5f9;color:#64748b;font-size:0.75rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:0.3rem 1rem;border-radius:var(--r99);margin-bottom:1.5rem}
 .pf-info-row{display:flex;gap:2.5rem;flex-wrap:wrap;padding-top:1.2rem;border-top:1px solid var(--bdr)}
 .pf-info-item{display:flex;align-items:center;gap:10px}
 .pf-info-icon{width:36px;height:36px;border-radius:var(--r8);display:flex;align-items:center;justify-content:center;font-size:0.95rem;flex-shrink:0}

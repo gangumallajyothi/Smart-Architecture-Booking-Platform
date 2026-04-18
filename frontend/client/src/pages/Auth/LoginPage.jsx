@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { API_BASE_URL } from "../../apiConfig";
 import { useNavigate } from "react-router-dom";
 import LoginBgImg from "./images/LoginBgImg.png";
 
@@ -6,8 +7,9 @@ function LoginPage() {
 
   const navigate = useNavigate();
 
-  const [form, setForm] = useState({ email: "", password: "" });
-  const [error, setError] = useState("");
+  const [form, setForm]       = useState({ email: "", password: "" });
+  const [error, setError]     = useState("");
+  const [showPwd, setShowPwd] = useState(false);
 
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -22,8 +24,7 @@ function LoginPage() {
     }
 
     try {
-      const res = await fetch("http://13.235.24.233:5000/api/login",
-       {
+      const res = await fetch(`${API_BASE_URL}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -59,25 +60,58 @@ function LoginPage() {
   }
 
   const styles = {
-    container: { height: "100vh", width: "100%", position: "relative", fontFamily: "Arial" },
-    bg: { height: "100%", width: "100%", objectFit: "cover", position: "absolute", zIndex: "-1" },
-    formBox: { 
-      position: "absolute", 
-      top: "50%", 
-      left: "50%", 
-      transform: "translate(-50%,-50%)", 
-      background: "rgba(255,255,255,0.95)", 
-      padding: "clamp(20px, 5vw, 40px)", 
-      borderRadius: "12px", 
-      width: "min(92%, 400px)", 
+    container: {
+      height: "100vh", width: "100%", position: "relative", fontFamily: "Arial"
+    },
+    bg: {
+      height: "100%", width: "100%", objectFit: "cover",
+      position: "absolute", zIndex: "-1"
+    },
+    formBox: {
+      position: "absolute",
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%,-50%)",
+      background: "rgba(255,255,255,0.95)",
+      padding: "clamp(20px, 5vw, 40px)",
+      borderRadius: "12px",
+      width: "min(92%, 400px)",
       boxShadow: "0 0 20px rgba(0,0,0,0.4)",
       boxSizing: "border-box"
     },
-    title: { textAlign: "center", fontSize: "clamp(20px, 6vw, 28px)", fontWeight: "bold", marginBottom: "20px", color: "darkorange" },
-    input: { padding: "12px", marginBottom: "12px", width: "100%", borderRadius: "6px", border: "1px solid #ccc", fontSize: "14px", boxSizing: "border-box" },
-    button: { padding: "12px", width: "100%", background: "darkorange", color: "white", border: "none", borderRadius: "6px", fontSize: "16px", cursor: "pointer" },
+    title: {
+      textAlign: "center", fontSize: "clamp(20px, 6vw, 28px)",
+      fontWeight: "bold", marginBottom: "20px", color: "darkorange"
+    },
+    input: {
+      padding: "12px", marginBottom: "12px", width: "100%",
+      borderRadius: "6px", border: "1px solid #ccc",
+      fontSize: "14px", boxSizing: "border-box", outline: "none"
+    },
+    pwdWrap: {
+      position: "relative", marginBottom: "12px"
+    },
+    pwdInput: {
+      padding: "12px 42px 12px 12px", width: "100%",
+      borderRadius: "6px", border: "1px solid #ccc",
+      fontSize: "14px", boxSizing: "border-box", outline: "none"
+    },
+    eyeBtn: {
+      position: "absolute", right: "12px", top: "50%",
+      transform: "translateY(-50%)", background: "none",
+      border: "none", cursor: "pointer", fontSize: "16px",
+      color: "#888", padding: 0
+    },
+    button: {
+      padding: "12px", width: "100%", background: "darkorange",
+      color: "white", border: "none", borderRadius: "6px",
+      fontSize: "16px", cursor: "pointer"
+    },
     error: { color: "red", textAlign: "center", marginBottom: "10px" },
-    register: { textAlign: "center", marginTop: "10px", fontSize: "14px", cursor: "pointer", color: "blue" }
+    register: {
+      textAlign: "center", marginTop: "10px",
+      fontSize: "14px", cursor: "pointer", color: "blue"
+    }
   };
 
   return (
@@ -99,16 +133,26 @@ function LoginPage() {
             required
           />
 
-          <input
-            style={styles.input}
-            type="password"
-            name="password"
-            placeholder="Password"
-            onChange={handleChange}
-            required
-          />
+          {/* Password with show/hide toggle */}
+          <div style={styles.pwdWrap}>
+            <input
+              style={styles.pwdInput}
+              type={showPwd ? "text" : "password"}
+              name="password"
+              placeholder="Password"
+              onChange={handleChange}
+              required
+            />
+            <button
+              type="button"
+              style={styles.eyeBtn}
+              onClick={() => setShowPwd(p => !p)}
+            >
+              {showPwd ? "🙈" : "👁️"}
+            </button>
+          </div>
 
-          <button style={styles.button}>Login</button>
+          <button style={styles.button} type="submit">Login</button>
         </form>
 
         <div style={styles.register} onClick={() => navigate("/register")}>

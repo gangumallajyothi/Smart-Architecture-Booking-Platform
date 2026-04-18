@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { API_BASE_URL } from "../apiConfig";
 
 const css = `
   .bk-wrap { font-family:'Inter',sans-serif; }
-  .bk-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:24px; }
-  .bk-title  { font-size:20px; font-weight:700; color:#111; }
+  .bk-header { display:flex; align-items:center; justify-content:space-between; margin-bottom: 28px; }
+  .bk-title  { font-size: 32px; font-weight: 800; color:#111; letter-spacing: -0.5px; }
 
   .bk-summary {
     display:flex; align-items:center; gap:16px;
@@ -142,7 +143,7 @@ const css = `
   }
   .bk-confirm-del:hover { background:#dc2626; }
   .bk-confirm-cancel {
-    flex:1; background:#f3f4f6; color:#374151; border:1px solid #e5e7eb; border-radius:8px;
+    flex:1; background:#f3f4f6; color:#374151; border:1px solid #e2e8f0; border-radius:8px;
     padding:10px; font-size:14px; font-weight:600; cursor:pointer; font-family:'Inter',sans-serif;
   }
 
@@ -207,13 +208,13 @@ function saveDeletedId(id) {
 }
 
 function Bookings({ onDataChange }) {
-  const [bookings,     setBookings]     = useState([]);
-  const [loading,      setLoading]      = useState(true);
-  const [search,       setSearch]       = useState('');
-  const [selectedBuilding, setSelected] = useState(null);
-  const [confirmId,    setConfirmId]    = useState(null);
-  const [deletingId,   setDeletingId]   = useState(null);
-  const [toast,        setToast]        = useState('');
+  const [bookings,         setBookings]     = useState([]);
+  const [loading,          setLoading]      = useState(true);
+  const [search,           setSearch]       = useState('');
+  const [selectedBuilding, setSelected]     = useState(null);
+  const [confirmId,        setConfirmId]    = useState(null);
+  const [deletingId,       setDeletingId]   = useState(null);
+  const [toast,            setToast]        = useState('');
 
   function showToast(msg) {
     setToast(msg);
@@ -221,7 +222,7 @@ function Bookings({ onDataChange }) {
   }
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/bookings")
+    fetch(`${API_BASE_URL}/bookings`)
       .then(res => res.json())
       .then(data => {
         const deletedIds = getDeletedIds();

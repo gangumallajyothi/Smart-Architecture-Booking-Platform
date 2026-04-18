@@ -4,15 +4,15 @@ const css = `
   @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap');
 
   .pr-wrap { font-family:'DM Sans',sans-serif; }
-  .pr-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:28px; }
-  .pr-title  { font-size:22px; font-weight:800; color:#111; font-family:'Syne',sans-serif; letter-spacing:-0.5px; }
+  .pr-header { display:flex; align-items:center; justify-content:space-between; margin-bottom: 28px; }
+  .pr-title  { font-size: 32px; font-weight: 800; color:#111; font-family:'Syne',sans-serif; letter-spacing:-0.5px; }
   .pr-add-btn {
-    background:#111; color:#fff; border:none; border-radius:10px;
-    padding:10px 20px; font-size:14px; font-weight:600; cursor:pointer;
-    font-family:'DM Sans',sans-serif; transition:background 0.2s,transform 0.15s;
-    letter-spacing:0.2px;
+    background: #000; color: #fff; border: none; border-radius: 10px;
+    padding: 10px 24px; font-size: 14px; font-weight: 700; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; transition: all 0.2s;
+    letter-spacing: 0.2px;
   }
-  .pr-add-btn:hover { background:#333; transform:translateY(-1px); }
+  .pr-add-btn:hover { background: #333; transform: translateY(-1px); }
 
   .pr-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
 
@@ -39,7 +39,7 @@ const css = `
   .pr-body { padding:16px 18px 18px; }
   .pr-card-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; }
   .pr-card-name { font-size:15px; font-weight:700; color:#111; font-family:'Syne',sans-serif; }
-  .pr-badge { padding:3px 11px; border-radius:20px; font-size:11px; font-weight:600; text-transform:capitalize; }
+  .pr-badge { padding:4px 12px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: capitalize; }
   .pr-badge.active    { background:#dcfce7; color:#15803d; }
   .pr-badge.planning  { background:#fff7ed; color:#c2410c; }
   .pr-badge.completed { background:#eff6ff; color:#1d4ed8; }
@@ -64,11 +64,11 @@ const css = `
   .pr-action.del:hover { background:#fef2f2; border-color:#fca5a5; }
 
   .pr-view-btn {
-    width:100%; margin-top:14px; padding:9px; background:#111; color:#fff;
-    border:none; border-radius:9px; font-size:13px; font-weight:600; cursor:pointer;
-    font-family:'DM Sans',sans-serif; transition:background 0.2s;
+    width: 100%; margin-top: 14px; padding: 11px; background: #000; color: #fff;
+    border: none; border-radius: 10px; font-size: 14px; font-weight: 700; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; transition: background 0.2s;
   }
-  .pr-view-btn:hover { background:#333; }
+  .pr-view-btn:hover { background: #333; }
 
   .pr-overlay {
     position:fixed; inset:0; background:rgba(0,0,0,0.45);
