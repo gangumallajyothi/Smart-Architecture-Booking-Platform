@@ -71,8 +71,8 @@ function RegisterPage() {
       } else {
         setError(data.error || "Registration Failed");
       }
-    } catch {
-      setError("Server error. Please check if the backend is running.");
+    } catch (err) {
+      setError(`Network Error: ${err.message}. (Hard refresh your browser)`);
     }
   }
 
