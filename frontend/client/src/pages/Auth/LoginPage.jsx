@@ -36,22 +36,23 @@ function LoginPage() {
       const data = await res.json();
 
       if (res.ok) {
-        console.log("DATA:", data);
-        console.log("ROLE:", data.role);
+        // Backend returns: { token, user: { name, email, role } }
+        const userName = data.user?.name || data.name || "User";
+        const userRole = data.user?.role || data.role || "user";
 
-        localStorage.setItem("userName", data.name);
+        localStorage.setItem("userName", userName);
         localStorage.setItem("userEmail", form.email);
 
-        if (data.role === "admin") {
-          alert(`Welcome Admin ${data.name} ✅`);
+        if (userRole === "admin") {
+          alert(`Welcome Admin ${userName} ✅`);
           navigate("/admin");
         } else {
-          alert(`Welcome ${data.name} ✅`);
+          alert(`Welcome ${userName} ✅`);
           navigate("/home");
         }
 
       } else {
-        setError(data.error || "Login Failed");
+        setError(data.message || data.error || "Login Failed");
       }
 
     } catch (err) {
