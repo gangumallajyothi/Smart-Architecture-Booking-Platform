@@ -20,7 +20,9 @@ Thumbs.db
 # Build folders
 dist/
 build/
+frontend/client/build/
+frontend/client/build.zip
 
-# Optional: IDE files
+# IDE files
 .vscode/
 .idea/
