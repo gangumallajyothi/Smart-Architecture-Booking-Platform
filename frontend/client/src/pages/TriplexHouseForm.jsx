@@ -47,7 +47,7 @@ function TriplexHouse() {
         .header { background:#3e556b; color:white; padding:15px; text-align:center; position:relative; }
         .backBtn { position:absolute; left:20px; top:12px; padding:6px 14px; background:#2c3e50; color:white; border:none; border-radius:5px; cursor:pointer; }
         .topSection { display:flex; gap:20px; padding:20px; }
-        .card { background:white; padding:20px; border-radius:10px; flex:1; min-width: 100%; max-width: 300px; box-shadow:0 0 10px rgba(0,0,0,0.1); }
+        .card { background:white; padding:20px; border-radius:10px; flex:1; min-width: 0; box-shadow:0 0 10px rgba(0,0,0,0.1); }
         .card img { width:100%; border-radius:8px; }
         .floorImages { display:flex; gap:20px; margin-top:10px; }
         .floorImages img { width:100%; border-radius:6px; }

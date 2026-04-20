@@ -71,8 +71,8 @@ function RegisterPage() {
       } else {
         setError(data.error || "Registration Failed");
       }
-    } catch (err) {
-      setError(`Network Error: ${err.message}. (Hard refresh your browser)`);
+    } catch {
+      setError("Server error. Please check if the backend is running.");
     }
   }
 
@@ -150,10 +150,6 @@ function RegisterPage() {
       <style>{`
         @media (max-width: 600px) {
           .card-container {
-          max-width: 1200px;
-          margin: 0 auto;
-          width: 100%;
-          box-sizing: border-box;
             grid-template-columns: 1fr !important;
             padding: 15px !important;
             gap: 20px !important;

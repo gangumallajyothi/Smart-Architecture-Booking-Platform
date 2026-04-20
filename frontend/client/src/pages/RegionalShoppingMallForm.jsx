@@ -103,9 +103,9 @@ function RegionalShoppingMallForm() {
         .backButton:hover { background: red; }
         .titleCard { width:100%; background: linear-gradient(to right, #0b2a5b, #0b4d4d); color:white; height:9vh; padding:25px; border-radius:6px; text-align:center; font-size: 28px; margin-bottom:20px; }
         .imageSection { display:flex; gap:20px; margin-bottom:25px; }
-        .card { flex:1; min-width: 100%; max-width: 300px; background:white; padding:15px; border-radius:10px; box-shadow:0 3px 10px rgba(0,0,0,0.2); }
+        // .card { flex:1; min-width: 100%; max-width: 300px; background:white; padding:15px; border-radius:10px; box-shadow:0 3px 10px rgba(0,0,0,0.2); }
         .card img { width:100%; border-radius:8px; }
-        .contentCard { background:white; padding:25px; border-radius:10px; margin-bottom:25px; box-shadow:0 3px 10px rgba(0,0,0,0.2); }
+        .card { background:white; padding:20px; border-radius:10px; flex:1; min-width: 0; box-shadow:0 0 10px rgba(0,0,0,0.1); }
         .contentCard h2 { color: darkblue; }
         .contentCard h3 { color: darkblue; }
         .declarationCard { background:white; padding:20px; border-radius:10px; box-shadow:0 3px 10px rgba(0,0,0,0.2); display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; gap: 15px; }

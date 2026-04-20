@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { API_BASE_URL } from "../apiConfig";
 import { useNavigate } from "react-router-dom";
 import ThreeStoreyHouseImg from "./images/ThreeStoreyHouseImg.jpg";
 import ThreeStoreyArchitecture from "./images/ThreeStoreyArchitecture.png";
@@ -18,7 +17,7 @@ function ThreeStoreyHouse() {
       const userName = localStorage.getItem("userName") || "Unknown";
       const userEmail = localStorage.getItem("userEmail") || "Unknown";
 
-      await fetch(`${API_BASE_URL}/bookings`, {
+      await fetch("http://localhost:5000/api/bookings", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -48,18 +47,15 @@ function ThreeStoreyHouse() {
         .backBtn { position:absolute; left:20px; top:12px; background:#2c3e50; color:white; border:none; padding:8px 14px; border-radius:6px; cursor:pointer; }
         .container { padding:20px; }
         .imageRow { display:flex; gap:20px; margin-bottom:20px; }
-        .card { background:white; padding:15px; border-radius:10px; flex:1; min-width: 100%; max-width: 300px; box-shadow:0px 2px 6px rgba(0,0,0,0.1); }
+        .card { background:white; padding:15px; border-radius:10px; flex:1; min-width: 0; box-shadow:0px 2px 6px rgba(0,0,0,0.1); }
         .card img { width:100%; border-radius:6px; margin-top:10px; }
         .contentBox { background:white; padding:20px; border-radius:10px; box-shadow:0px 2px 6px rgba(0,0,0,0.1); margin-bottom:20px; }
         .contentBox h2 { color:#2c3e50; }
         .approveBox { background:white; padding:20px; border-radius:10px; display:flex; justify-content:space-between; align-items:center; flex-wrap: wrap; gap: 15px; box-shadow:0px 2px 6px rgba(0,0,0,0.1); }
         .approveBtn { background:green; color:white; border:none; padding:10px 25px; font-size:16px; border-radius:6px; cursor:pointer; }
-              @media (max-width: 600px) {
+      `}
+        {/* @media (max-width: 600px) {
           .card-container {
-          max-width: 1200px;
-          margin: 0 auto;
-          width: 100%;
-          box-sizing: border-box;
             grid-template-columns: 1fr !important;
             padding: 15px !important;
             gap: 20px !important;
@@ -68,8 +64,9 @@ function ThreeStoreyHouse() {
             width: 100% !important;
             max-width: 100% !important;
           }
-        }
-      `}</style>
+        } */}
+        
+        </style>
 
       <div className="header">
         <button className="backBtn" onClick={goBack}>← Back</button>

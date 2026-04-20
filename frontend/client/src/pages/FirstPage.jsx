@@ -26,26 +26,25 @@ function FirstPage() {
     CafeCoffeeRestaurantImg,
     ApartmentImg,
     EngineeringCollegeImg
-  ]
+  ];
 
-  const [index, setIndex] = useState(0)
-  const [logout, setLogout] = useState(false)
-  const [contact, setContact] = useState(false)
-  const [showCalculator, setShowCalculator] = useState(false)
-
-  const [showNumber, setShowNumber] = useState(false)
-  const [showEmail, setShowEmail] = useState(false)
+  const [index, setIndex] = useState(0);
+  const [logout, setLogout] = useState(false);
+  const [contact, setContact] = useState(false);
+  const [showCalculator, setShowCalculator] = useState(false);
+  const [showNumber, setShowNumber] = useState(false);
+  const [showEmail, setShowEmail] = useState(false);
 
   useEffect(() => {
     const slider = setInterval(() => {
-      setIndex((prev) => (prev + 1) % images.length)
-    }, 3000)
-    return () => clearInterval(slider)
-  }, [images.length])
+      setIndex((prev) => (prev + 1) % images.length);
+    }, 3000);
+    return () => clearInterval(slider);
+  }, [images.length]);
 
   const handleLogout = () => {
-    window.location.href = "https://www.google.com"
-  }
+    window.location.href = "https://www.google.com";
+  };
 
   const styles = {
 
@@ -73,9 +72,9 @@ function FirstPage() {
       display: "flex",
       justifyContent: "flex-end",
       alignItems: "center",
-      gap: "15px",
+      gap: "18px",
       border: "3px solid #FFC107",
-      padding: "10px 20px",
+      padding: "10px 22px",
       borderRadius: "10px",
       background: "rgba(255,255,255,0.9)",
       zIndex: "100"
@@ -84,35 +83,37 @@ function FirstPage() {
     link: {
       cursor: "pointer",
       fontWeight: "bold",
-      fontSize: "14px",
+      fontSize: "15px",
       whiteSpace: "nowrap"
     },
 
     person: {
-      height: "25px",
+      height: "28px",
       cursor: "pointer"
     },
 
     arrow: {
-      height: "12px",
+      height: "14px",
       cursor: "pointer"
     },
 
     logoutBox: {
       position: "absolute",
-      top: "60px",
+      top: "70px",
       right: "10px",
       background: "white",
-      padding: "10px",
+      padding: "10px 18px",
       borderRadius: "6px",
       boxShadow: "0 0 10px gray",
       cursor: "pointer",
+      fontWeight: "bold",
+      fontSize: "15px",
       zIndex: "101"
     },
 
     contactBox: {
       position: "absolute",
-      top: "60px",
+      top: "70px",
       right: "10px",
       background: "white",
       padding: "15px",
@@ -128,29 +129,50 @@ function FirstPage() {
       gap: "10px",
       margin: "8px",
       cursor: "pointer",
-      fontSize: "14px"
+      fontSize: "15px",
+      fontWeight: "bold"
     },
 
     icon: {
-      height: "20px"
+      height: "22px"
     },
 
-    marquee: {
+    marqueeWrapper: {
       position: "absolute",
-      top: "55%", /* Adjusted slightly lower to align with building image center-bottom */
+      top: "55%",
       transform: "translateY(-50%)",
-      fontSize: "24px",
-      color: "darkorange",
-      fontWeight: "bold",
-      display: "flex",
-      alignItems: "center",
-      gap: "10px",
       width: "100%",
-      textAlign: "center"
+      overflow: "hidden",
+      whiteSpace: "nowrap",
+    },
+
+    marqueeTrack: {
+      display: "inline-flex",
+      alignItems: "center",
+      animation: "marquee-scroll 18s linear infinite",
+    },
+
+    marqueeItem: {
+      display: "inline-flex",
+      alignItems: "center",
+      gap: "30px",
+      paddingRight: "100px",
+    },
+
+    marqueeText: {
+      fontSize: "45px",
+      fontWeight: "800",
+      color: "#FFD700",
+      WebkitTextStroke: "2px #FF6600",
+      textShadow: "2px 2px 6px rgba(0,0,0,0.8)",
+      letterSpacing: "1px",
+      wordSpacing: "1px",
+      whiteSpace: "nowrap",
     },
 
     buildingIcon: {
-      height: "30px"
+      height: "48px",
+      flexShrink: 0
     },
 
     calculatorIcon: {
@@ -177,10 +199,13 @@ function FirstPage() {
       boxShadow: "0 0 10px gray",
       cursor: "pointer",
       fontWeight: "bold",
+      fontSize: "15px",
       zIndex: "100"
     }
 
-  }
+  };
+
+  const text = "Welcome to Smart Architecture Booking Platform";
 
   return (
 
@@ -196,119 +221,74 @@ function FirstPage() {
         onClick={() => setShowCalculator(!showCalculator)}
       />
 
-      {/* Calculator Menu — clicks cheste login page ki navigate avutundi ✅ */}
       {showCalculator && (
-        <div
-          style={styles.calculatorMenu}
-          onClick={() => navigate("/login")}
-        >
+        <div style={styles.calculatorMenu} onClick={() => navigate("/login")}>
           Design Cost Analyzer
         </div>
       )}
 
       {/* Navbar */}
       <div className="responsive-navbar" style={styles.navbar}>
-
-        <span style={styles.link} onClick={() => navigate("/register")}>
-          Register
-        </span>
-
-        <span style={styles.link} onClick={() => navigate("/login")}>
-          Login
-        </span>
-
+        <span style={styles.link} onClick={() => navigate("/register")}>Register</span>
+        <span style={styles.link} onClick={() => navigate("/login")}>Login</span>
         <span style={styles.link} onClick={() => navigate("/aboutus")}>About Us</span>
-
-        <span
-          style={styles.link}
-          onClick={() => setContact(!contact)}
-        >
-          Contact Us
-        </span>
-
+        <span style={styles.link} onClick={() => setContact(!contact)}>Contact Us</span>
         <img src={Person} alt="" style={styles.person} />
-
-        <img
-          src={Downarrow}
-          alt=""
-          style={styles.arrow}
-          onClick={() => setLogout(!logout)}
-        />
-
+        <img src={Downarrow} alt="" style={styles.arrow} onClick={() => setLogout(!logout)} />
       </div>
 
       {/* Logout */}
       {logout && (
-        <div
-          style={styles.logoutBox}
-          onClick={handleLogout}
-        >
-          Logout
-        </div>
+        <div style={styles.logoutBox} onClick={handleLogout}>Logout</div>
       )}
 
       {/* Contact */}
       {contact && (
         <div style={styles.contactBox}>
-
-          {/* Call */}
-          <div
-            style={styles.contactItem}
-            onClick={() => {
-              setShowNumber(!showNumber)
-              setShowEmail(false)
-            }}
-          >
+          <div style={styles.contactItem} onClick={() => { setShowNumber(!showNumber); setShowEmail(false); }}>
             <img src={call} alt="" style={styles.icon} />
             Contact
           </div>
-
           {showNumber && (
-            <div style={{ marginLeft: "35px" }}>
+            <div style={{ marginLeft: "35px", fontSize: "15px" }}>
               <a href="tel:+919876543210">+91 9876543210</a>
             </div>
           )}
-
-          {/* Gmail */}
-          <div
-            style={styles.contactItem}
-            onClick={() => {
-              setShowEmail(!showEmail)
-              setShowNumber(false)
-            }}
-          >
+          <div style={styles.contactItem} onClick={() => { setShowEmail(!showEmail); setShowNumber(false); }}>
             <img src={Gmail} alt="" style={styles.icon} />
             Gmail
           </div>
-
           {showEmail && (
-            <div style={{ marginLeft: "35px" }}>
+            <div style={{ marginLeft: "35px", fontSize: "15px" }}>
               <a href="mailto:teja@gmail.com">teja@gmail.com</a>
             </div>
           )}
-
         </div>
       )}
 
-      {/* Scrolling Heading */}
-      <div className="responsive-marquee" style={{
-        ...styles.marquee,
-        whiteSpace: "nowrap",
-        overflow: "hidden",
-        width: "100%",
-        animation: "scroll-left 15s linear infinite"
-      }}>
+      {/* Seamless Marquee — exactly 2 copies, -50% loop */}
+      <div style={styles.marqueeWrapper}>
+        <div style={styles.marqueeTrack}>
 
-        <img src={Building} alt="" style={styles.buildingIcon} />
+          {/* Copy 1 */}
+          <div style={styles.marqueeItem}>
+            <img src={Building} alt="" style={styles.buildingIcon} />
+            <span style={styles.marqueeText}>{text}</span>
+          </div>
 
-        <span>Welcome to Smart Architecture Booking Platform</span>
+          {/* Copy 2 — identical, seamless join */}
+          <div style={styles.marqueeItem}>
+            <img src={Building} alt="" style={styles.buildingIcon} />
+            <span style={styles.marqueeText}>{text}</span>
+          </div>
 
+        </div>
       </div>
 
       <style>{`
-        @keyframes scroll-left {
-          0% { transform: translateX(100%) }
-          100% { transform: translateX(-100%) }
+        @keyframes marquee-scroll {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
         }
         @media (max-width: 768px) {
           .responsive-navbar {
@@ -319,16 +299,12 @@ function FirstPage() {
             top: 60px !important;
             gap: 10px !important;
           }
-          .responsive-marquee {
-            font-size: 24px !important;
-          }
         }
       `}</style>
 
     </div>
 
-  )
-
+  );
 }
 
 export default FirstPage;

@@ -160,9 +160,18 @@ export default function Users({ onDataChange }) {
 
   // ✅ FIX: doDelete now has its own closing brace
   function doDelete() {
-    const newList = users.filter(u => (u._id || u.id) !== confirmId);
-    updateUsers(newList);
-    setConfirmId(null);
+    if (!confirmId) return;
+    fetch(`${API_BASE_URL}/users/${confirmId}`, { method: "DELETE" })
+      .then(res => res.json())
+      .then(() => {
+        const newList = users.filter(u => (u._id || u.id) !== confirmId);
+        updateUsers(newList);
+        setConfirmId(null);
+      })
+      .catch(err => {
+        console.error("Delete error:", err);
+        setConfirmId(null);
+      });
   }
 
   // ✅ FIX: confirmUser declared outside doDelete, inside component

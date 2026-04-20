@@ -250,13 +250,20 @@ function Bookings({ onDataChange }) {
     const id = confirmId;
     setConfirmId(null);
     setDeletingId(id);
-    setTimeout(() => {
-      saveDeletedId(id);
-      const newList = bookings.filter(b => (b._id || b.id) !== id);
-      updateBookings(newList);
-      setDeletingId(null);
-      showToast('Booking deleted successfully');
-    }, 350);
+    
+    fetch(`${API_BASE_URL}/bookings/${id}`, { method: "DELETE" })
+      .then(res => res.json())
+      .then(() => {
+        saveDeletedId(id);
+        const newList = bookings.filter(b => (b._id || b.id) !== id);
+        updateBookings(newList);
+        setDeletingId(null);
+        showToast('Booking deleted successfully');
+      })
+      .catch(err => {
+        console.error("Delete error:", err);
+        setDeletingId(null);
+      });
   }
 
   const buildingMap = {};

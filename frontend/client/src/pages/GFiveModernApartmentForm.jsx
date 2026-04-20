@@ -109,8 +109,9 @@ function GFiveModernApartmentForm() {
         .backButton:hover { background: purple; }
         .titleCard { width:100%; background: linear-gradient(135deg, #6a0dad, #8b4513); color:white; height:9vh; padding:25px; border-radius:6px; text-align:center; font-size: 28px; margin-bottom:20px; }
         .imageSection { display:flex; gap:20px; margin-bottom:25px; }
-        .card { flex:1; min-width: 100%; max-width: 300px; background:white; padding:15px; border-radius:10px; box-shadow:0 3px 10px rgba(0,0,0,0.2); }
-        .card img { width:100%; border-radius:8px; }
+        // .card img { width:100%; border-radius:8px; height:100vh; }
+        // .card { flex:1; min-width:0; background:white; padding:15px; border-radius:10px; box-shadow:0 3px 10px rgba(0,0,0,0.2); }
+.card img { width:100%; height:500px; object-fit:contain; border-radius:8px; }
         .contentCard { background:white; padding:25px; border-radius:10px; margin-bottom:25px; box-shadow:0 3px 10px rgba(0,0,0,0.2); }
         .contentCard h2 { color: purple; }
         .contentCard h3 { color: purple; }
